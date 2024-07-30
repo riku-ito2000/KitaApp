@@ -1,4 +1,10 @@
-data/mysql
+# Ignore directories
+node_modules/
+data/mysql/
+.idea/
+
+# Ignore specific files
 .DS_Store
-.idea
+
+# Allow specific files
 !.gitkeep
