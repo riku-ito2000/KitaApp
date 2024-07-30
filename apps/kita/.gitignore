@@ -27,9 +27,3 @@ yarn-error.log
 
 # Ignore storage keys
 /storage/*.key
-
-# Ignore specific package files
-composer.json
-composer.lock
-composer-lock.json
-package.json
