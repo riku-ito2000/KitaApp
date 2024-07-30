@@ -9,6 +9,7 @@ public/hot/
 public/storage/
 fleet/
 
+
 # Ignore specific files
 .DS_Store
 .phpunit.result.cache
