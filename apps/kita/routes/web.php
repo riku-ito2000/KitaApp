@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+//use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,10 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [LoginController::class, 'login']);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// ログアウトルート
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+// 認証が必要なルート
+//Route::middleware('auth')->group(function () {
+//    Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
+//});
