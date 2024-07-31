@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 
 // 既存の登録ルートをコメントアウト
 // Auth::routes();
