@@ -13,10 +13,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .styles([
-        'resources/css/app.css', // メインの CSS ファイル
-        // 'resources/css/extra.css', // その他の CSS ファイルがある場合
-    ], 'public/css/all.css');
 
 // バージョニング（キャッシュバスティング）
 if (mix.inProduction()) {
