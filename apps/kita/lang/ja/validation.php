@@ -41,6 +41,7 @@ return [
     'email' => ':attributeは、有効なメールアドレス形式で指定してください。',
     'ends_with' => ':attributeは、次のいずれかで終わらなければなりません: :values',
     'exists' => '選択された:attributeは、有効ではありません。',
+    'failed' => '認証情報が記録と一致しません。',
     'file' => ':attributeは、ファイルでなければなりません。',
     'filled' => ':attributeは、必須です。',
     'gt' => [
@@ -112,6 +113,7 @@ return [
     ],
     'starts_with' => ':attributeは、次のいずれかで始まらなければなりません: :values',
     'string' => ':attributeは、文字列でなければなりません。',
+    'throttle' => 'ログイン試行回数が多すぎます。:seconds秒後に再試行してください。',
     'timezone' => ':attributeは、有効なタイムゾーンでなければなりません。',
     'unique' => ':attributeは、既に存在します。',
     'uploaded' => ':attributeのアップロードに失敗しました。',

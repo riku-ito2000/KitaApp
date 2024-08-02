@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-//use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +39,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 //Route::middleware('auth')->group(function () {
 //    Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
 //});
+
+//一覧画面に遷移するルート
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');

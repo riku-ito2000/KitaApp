@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
-        <h1 class="mb-1" style="font-size: 35px; font-weight: 300; color: #333; width: 100%; max-width: 500px; text-align: left;">
+    <div class="container d-flex flex-column justify-content-start align-items-center" style="min-height: 100vh; margin-top: 50px;">
+        <h1 class="mb-1" style="font-size: 25px; font-family: 'Poppins', sans-serif; font-weight: 300; color: #333; width: 500px; text-align: left;">
             Kitaログイン
         </h1>
         <div style="width: 100%; max-width: 500px; border-bottom: 1px solid #333; margin-bottom: 10px;"></div>
@@ -16,7 +16,7 @@
 
                     <div class="form-group mb-3">
                         <label for="email" class="form-label" style="font-size: 16px; color: #000;">メールアドレス</label>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="background-color: #fff;">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -26,7 +26,7 @@
 
                     <div class="form-group mb-3">
                         <label for="password" class="form-label" style="font-size: 17px; color: #000;">パスワード</label>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="background-color: #fff;">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -44,4 +44,3 @@
         </div>
     </div>
 @endsection
-
