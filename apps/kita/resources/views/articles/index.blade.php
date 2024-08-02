@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-end">
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
                 @csrf
             </form>
             <button class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
