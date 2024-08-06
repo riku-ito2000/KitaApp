@@ -31,4 +31,9 @@ class Member extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

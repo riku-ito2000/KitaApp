@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>{{ config('app.name', 'Kita') }}</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -14,12 +14,9 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body style="background-color: #e0e0e0;">
+<body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="height: 70px;">
         <div class="container-fluid">
@@ -31,9 +28,13 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                 </ul>
+
+                <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
+                    <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
@@ -51,13 +52,15 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
+
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item" href="{{ route('logout.get') }}"
                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+
+                                <form id="logout-form" action="{{ route('logout.get') }}" method="GET" class="d-none">
                                     @csrf
                                 </form>
                             </div>
@@ -69,11 +72,9 @@
     </nav>
 </header>
 
-<main style="background-color: #e0e0e0; padding-top: 90px;">
-    <div class="py-3">
-        <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
-            @yield('content')
-        </div>
+<main class="py-4">
+    <div class="container">
+        @yield('content')
     </div>
 </main>
 </body>
