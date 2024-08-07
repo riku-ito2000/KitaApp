@@ -25,3 +25,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 });
+
+//記事検索ルート
+Route::get('/search', [ArticleController::class, 'search'])->name('search');
