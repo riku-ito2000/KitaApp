@@ -7,14 +7,20 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    protected function escapeLike(string $value): string
+    {
+        return addcslashes($value, '%_\\');
+    }
+
     public function index(Request $request)
     {
-        $query = $request->input('query');
+        $query = trim($request->input('query'));
         $paginationLimit = config('pagination.articles', 10);
 
         if ($query) {
-            $articles = Article::where('title', 'LIKE', "%{$query}%")
-                ->orWhere('contents', 'LIKE', "%{$query}%")
+            $escapedQuery = $this->escapeLike($query);
+            $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
+                ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
                 ->with(['member', 'tags'])
                 ->paginate($paginationLimit)
                 ->appends(['query' => $query]);
@@ -29,11 +35,12 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->input('query');
+        $query = trim($request->input('query'));
         $paginationLimit = config('pagination.pagination_limit', 10);
 
-        $articles = Article::where('title', 'LIKE', "%{$query}%")
-            ->orWhere('contents', 'LIKE', "%{$query}%")
+        $escapedQuery = $this->escapeLike($query);
+        $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
+            ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
             ->with(['member', 'tags'])
             ->paginate($paginationLimit)
             ->appends(['query' => $query]);
