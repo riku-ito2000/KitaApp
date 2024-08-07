@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 
 // 既存の登録ルートをコメントアウト
 // Auth::routes();
@@ -33,4 +32,13 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [LoginController::class, 'login']);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// ログアウトルート
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+// 認証が必要なルート
+//Route::middleware('auth')->group(function () {
+//    Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
+//});
+
+//一覧画面に遷移するルート
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
