@@ -25,8 +25,10 @@
                 {{ config('app.name', 'Kita') }}
             </a>
             <form class="d-flex ms-3" action="{{ route('articles.index') }}" method="GET">
-                <input class="form-control me-2" type="search" name="query" placeholder="Search for something" aria-label="Search" style="width: 200px;" value="{{ request('query') }}">
-                <button class="btn" type="submit" style="background-color: #5a5; color: white;">検索</button>
+                <div class="input-group">
+                    <input class="form-control" type="search" name="query" placeholder="Search for something" aria-label="Search" style="width: 200px;" value="{{ request('query') }}">
+                    <button class="btn" type="submit" style="background-color: #5a5; color: white; border: none;">検索</button>
+                </div>
             </form>
             <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
@@ -34,6 +36,9 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                プロフィール編集
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}">
                                 {{ __('Logout') }}
                             </a>
