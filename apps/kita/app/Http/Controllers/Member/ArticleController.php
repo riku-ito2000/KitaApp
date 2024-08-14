@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Member;
 
+use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
@@ -48,5 +49,30 @@ class ArticleController extends Controller
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
 
         return view('articles.index', compact('articles', 'message'));
+    }
+
+    public function create()
+    {
+        return view('member.articles.create');
+    }
+
+    public function store(Request $request)
+    {
+        // バリデーション
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+
+        // 記事を保存
+        $article = Article::create([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'member_id' => auth()->id(),  // ログインユーザーのIDを保存
+        ]);
+
+        // フラッシュメッセージを設定
+        return redirect()->route('articles.edit', $article->id)
+            ->with('success', '記事を投稿しました。');
     }
 }
