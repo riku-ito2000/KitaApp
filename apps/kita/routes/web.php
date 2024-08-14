@@ -19,7 +19,7 @@ Route::middleware('guest')->group(function () {
 });
 
 // ログアウトルート
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // 認証が必要なルート
 Route::middleware('auth')->group(function () {
