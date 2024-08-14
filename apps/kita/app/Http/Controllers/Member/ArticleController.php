@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Member;
 
+use App\Http\Controllers\Controller;
 use App\Models\Article;
 
 class ArticleController extends Controller
@@ -10,6 +11,7 @@ class ArticleController extends Controller
     {
         $articles = Article::with(['member', 'tags'])->paginate(config('pagination.articles'));
 
-        return view('articles.index', compact('articles'));
+        return view('member.articles.index', compact('articles'));
+
     }
 }

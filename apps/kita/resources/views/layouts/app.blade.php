@@ -18,34 +18,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body style="background-color: #e0e0e0;">
-<header>
-    <nav class="navbar navbar-expand-md" style="height: 70px; background-color: #ffffff;">
-        <div class="container d-flex justify-content-center align-items-center" style="max-width: 800px;">
-            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" style="background-color: #5a5; color: white; border-radius: 50px; padding: 10px 40px; font-size: 1.5rem; border-radius: 50px 50px 50px 50px;">
-                {{ config('app.name', 'Kita') }}
-            </a>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}">
-                            {{ __('Logout') }}
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
-<main style="background-color: #e0e0e0; padding-top: 90px;">
+<!-- ナビバーのセクション -->
+@hasSection('navbar')
+    <header>
+        <nav class="navbar navbar-expand-md" style="height: 70px; background-color: #ffffff;">
+            <div class="container d-flex justify-content-center align-items-center" style="max-width: 800px;">
+                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" style="background-color: #5a5; color: white; border-radius: 50px; padding: 10px 40px; font-size: 1.5rem; border-radius: 50px 50px 50px 50px;">
+                    {{ config('app.name', 'Kita') }}
+                </a>
+                <ul class="navbar-nav ms-auto">
+                    @guest
+                        <!-- ログインしていない場合に表示されるナビゲーションリンク -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                        </li>
+                    @else
+                        <!-- ログインしている場合に表示されるナビゲーションリンク -->
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}">
+                                    {{ __('ログアウト') }}
+                                </a>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+@endif
+
+<main style="background-color: #e0e0e0; padding-top: 50px;">
     <div class="py-3">
-        <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
-            @yield('content')
-        </div>
+            @yield('container')
     </div>
 </main>
 </body>
 </html>
+
