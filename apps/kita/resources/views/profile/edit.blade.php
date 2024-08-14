@@ -41,12 +41,12 @@
                         <label for="password">パスワード</label>
                         <div class="d-flex align-items-center">
                             <span class="me-3">*****</span>
-                            <a href="{{ route('password.change') }}" class="btn" style="background-color: #5a5; color: white; border: none;">パスワードを変更する</a>
+                            <a href="{{ route('password.change') }}" class="btn" style="background-color: #5a5; color: white; border: none; border-radius: 25px;">パスワードを変更する</a>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn" style="background-color: #5a5; color: white; border: none; margin-bottom: 30px;">更新する</button>
+                        <button type="submit" class="btn" style="background-color: #5a5; color: white; border: none; margin-bottom: 30px; border-radius: 25px;">更新する</button>
                     </div>
                 </form>
             </div>
