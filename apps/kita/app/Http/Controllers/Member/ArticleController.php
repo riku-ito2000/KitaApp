@@ -26,12 +26,12 @@ class ArticleController extends Controller
                 ->paginate($paginationLimit)
                 ->appends(['query' => $query]);
         } else {
-            $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
+            $articles = Article::with(['member', 'tags'])->paginate(config('pagination.articles'));
         }
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
 
-        return view('articles.index', compact('articles', 'message'));
+        return view('member.articles.index', compact('articles', 'message'));
     }
 
     public function search(Request $request)

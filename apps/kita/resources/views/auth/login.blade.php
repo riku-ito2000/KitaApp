@@ -1,8 +1,7 @@
-@extends('layouts.simple')
-
-@section('content')
+@extends('layouts.app')
+@section('container')
     <div class="container d-flex flex-column justify-content-start align-items-center" style="min-height: 100vh; margin-top: 50px;">
-        <h1 class="mb-1" style="font-size: 25px; font-family: 'Poppins', sans-serif; font-weight: 300; color: #333; width: 500px; text-align: left;">
+        <h1 class="mb-1" style="font-size: 30px; font-family: 'Poppins', sans-serif; font-weight: 300; color: #333; width: 500px; text-align: left;">
             Kitaログイン
         </h1>
         <div style="width: 100%; max-width: 500px; border-bottom: 1px solid #333; margin-bottom: 10px;"></div>
