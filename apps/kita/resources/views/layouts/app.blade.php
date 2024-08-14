@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/kTcYBfljt0MhGQ5BUsAXO6XvlOHP6FzJnDMEbca+maU1Ea5w5z2kPjszef6USF7GkAzzw2zB1nZzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body style="background-color: #e0e0e0;">
 <header>
@@ -31,19 +33,15 @@
                 </div>
             </form>
             <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                                プロフィール編集
-                            </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}">
-                                {{ __('Logout') }}
-                            </a>
-                        </div>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a id="profileDropdown" class="nav-link d-flex align-items-center justify-content-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #5a5; color: white; height: 38px; width: 38px; padding: 0; border-radius: 5px;">
+                        <i class="fas fa-user-circle" style="font-size: 1.5rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="{{ route('profile.edit') }}">プロフィール編集</a></li>
+                        <li><a class="dropdown-item" href="{{ route('logout') }}">ログアウト</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
