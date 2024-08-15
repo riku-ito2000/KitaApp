@@ -1,4 +1,5 @@
- <nav class="navbar navbar-expand-md" style="height: 70px; background-color: #ffffff;">
+<header>
+    <nav class="navbar navbar-expand-md" style="height: 70px; background-color: #ffffff;">
         <div class="container d-flex justify-content-center align-items-center" style="max-width: 800px;">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" style="background-color: #5a5; color: white; border-radius: 50px; padding: 10px 40px; font-size: 1.5rem; border-radius: 50px 50px 50px 50px;">
                 {{ config('app.name', 'Kita') }}
@@ -27,3 +28,4 @@
 
         </div>
     </nav>
+</header>

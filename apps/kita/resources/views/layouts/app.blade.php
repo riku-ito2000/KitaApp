@@ -18,9 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body style="background-color: #e0e0e0;">
-
-<!-- ナビバーのセクション -->
-@yield('navbar')
+<!-- ログイン・会員登録ページでない場合のみnavbarを表示 -->
+@if (!request()->is('login') && !request()->is('member_registration'))
+    @include('common.header')
+@endif
 
 <main style="background-color: #e0e0e0; padding-top: 50px;">
     <div class="py-3">

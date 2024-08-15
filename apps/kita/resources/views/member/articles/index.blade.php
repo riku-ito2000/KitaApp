@@ -2,10 +2,6 @@
 
 @section('title', '記事一覧 - Kita')
 
-@section('navbar')
-    @include('common.header')
-@endsection
-
 @section('container')
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
         <!-- ここに一覧画面の内容を記述 -->
