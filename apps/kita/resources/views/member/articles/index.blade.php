@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
+@section('title', '記事一覧 - Kita')
+
 @section('navbar')
-    <!-- このセクションを空にすることで、app.blade.php のナビバーが表示 -->
+    @include('common.header')
 @endsection
 
 @section('container')

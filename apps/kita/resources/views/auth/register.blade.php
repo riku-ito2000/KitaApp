@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '新規会員登録 - Kita')
+
 @section('container')
     <div class="container d-flex flex-column justify-content-start align-items-center" style="min-height: 100vh;">
         <h1 class="mb-1" style="font-size: 30px; font-family: 'Poppins', sans-serif; font-weight: 300; color: #333; width: 500px; text-align: left;">
