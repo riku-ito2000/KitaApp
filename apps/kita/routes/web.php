@@ -1,25 +1,11 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Member\ArticleController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
-
-// 既存の登録ルートをコメントアウト
-// Auth::routes();
 
 // 新しい登録ルートを定義
 Route::middleware('guest')->group(function () {
@@ -35,10 +21,5 @@ Route::middleware('guest')->group(function () {
 // ログアウトルート
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-// 認証が必要なルート
-//Route::middleware('auth')->group(function () {
-//    Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
-//});
-
-//一覧画面に遷移するルート
+// 認証が不要なルート
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
