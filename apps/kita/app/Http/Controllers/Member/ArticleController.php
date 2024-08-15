@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Member;
 
+use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,6 @@ class ArticleController extends Controller
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
 
-        return view('articles.index', compact('articles', 'message'));
+        return view('member.articles.index', compact('articles', 'message'));
     }
 }

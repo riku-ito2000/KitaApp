@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Member\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
@@ -19,12 +19,10 @@ Route::middleware('guest')->group(function () {
 });
 
 // ログアウトルート
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-// 認証が必要なルート
-Route::middleware('auth')->group(function () {
-    Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
-});
+// 認証が不要なルート
+Route::get('/articles', [ArticleController::class, 'index'])->name('member.articles.index');
 
 //記事検索ルート
 Route::get('/search', [ArticleController::class, 'search'])->name('search');
