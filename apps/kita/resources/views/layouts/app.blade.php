@@ -34,6 +34,11 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                         </li>
                     @else
+                        <li class="nav-item">
+                            <a href="{{ route('articles.create') }}" class="btn" style="background-color: white; border: 2px solid #5a5; color: black; padding: 8px 30px;">
+                                記事を作成する
+                            </a>
+                        </li>
                         <!-- ログインしている場合に表示されるナビゲーションリンク -->
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

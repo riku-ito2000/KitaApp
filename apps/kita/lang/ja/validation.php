@@ -169,5 +169,6 @@ return [
         'password' => 'パスワード',
         'new_password' => '新しいパスワード',
         'new_password_confirmation' => '新しいパスワード（確認）',
+        'title' => 'タイトル',
     ],
 ];

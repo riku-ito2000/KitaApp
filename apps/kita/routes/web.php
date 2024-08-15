@@ -8,23 +8,22 @@ use Illuminate\Support\Facades\Route;
 
 // 認証が不要なルート
 Route::middleware('guest')->group(function () {
-    // ホームページ（ログインフォーム）ルート
     Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
-
-    // 会員登録ルート
     Route::get('member_registration', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('member_registration', [RegisterController::class, 'register']);
-
-    // ログインルート
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('login', [LoginController::class, 'login']);
 });
 
-// ログアウトルート（認証が必要）
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-
 // 認証が必要なルート
 Route::middleware('auth')->group(function () {
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+    // 記事作成・編集ルート
+    Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+    Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+    Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+
     // プロフィール編集ルート
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -34,11 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/password_change', [ProfileController::class, 'passwordChange'])->name('password.change');
 });
 
-// 認証が不要なルート
-Route::middleware('guest')->group(function () {
-    // 記事一覧ルート
-    Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
-
-    // 記事検索ルート
-    Route::get('/search', [ArticleController::class, 'search'])->name('search');
-});
+// 認証不要なルート
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/search', [ArticleController::class, 'search'])->name('search');
