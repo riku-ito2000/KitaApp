@@ -4,6 +4,12 @@
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" style="background-color: #5a5; color: white; border-radius: 50px; padding: 10px 40px; font-size: 1.5rem; border-radius: 50px 50px 50px 50px;">
                 {{ config('app.name', 'Kita') }}
             </a>
+            <form class="d-flex ms-3" action="{{ route('member.articles.index') }}" method="GET">
+                <div class="input-group">
+                    <input class="form-control" type="search" name="query" placeholder="Search for something" aria-label="Search" style="width: 250px; background-color: #fff;" value="{{ request('query') }}">
+                    <button class="btn" type="submit" style="width: 100px; background-color: #5a5; color: white; border: none;">検索</button>
+                </div>
+            </form>
             <ul class="navbar-nav ms-auto">
                 @guest
                     <!-- ログインしていない場合に表示されるナビゲーションリンク -->

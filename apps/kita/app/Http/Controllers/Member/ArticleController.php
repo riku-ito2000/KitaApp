@@ -31,7 +31,7 @@ class ArticleController extends Controller
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
 
-        return view('articles.index', compact('articles', 'message'));
+        return view('member.articles.index', compact('articles', 'message'));
     }
 
     public function search(Request $request)

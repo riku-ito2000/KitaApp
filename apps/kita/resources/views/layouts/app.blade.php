@@ -21,7 +21,7 @@
 </head>
 <body style="background-color: #e0e0e0;">
 <!-- ログイン・会員登録ページでない場合のみnavbarを表示 -->
-@if (!request()->is('login') && !request()->is('member_registration'))
+@if (!request()->is('login') && !request()->is('member_registration') && !request()->is('/'))
     @include('common.header')
 @endif
 
