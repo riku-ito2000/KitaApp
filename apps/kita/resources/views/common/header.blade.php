@@ -6,7 +6,7 @@
             </a>
             <form class="d-flex ms-3" action="{{ route('member.articles.index') }}" method="GET">
                 <div class="input-group">
-                    <input class="form-control" type="search" name="query" placeholder="Search for something" aria-label="Search" style="width: 250px; background-color: #fff;" value="{{ request('query') }}">
+                    <input class="form-control" type="search" name="search" placeholder="Search for something" aria-label="Search" style="width: 250px; background-color: #fff;" value="{{ request('query') }}">
                     <button class="btn" type="submit" style="width: 100px; background-color: #5a5; color: white; border: none;">検索</button>
                 </div>
             </form>

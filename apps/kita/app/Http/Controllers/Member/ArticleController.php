@@ -15,7 +15,7 @@ class ArticleController extends Controller
 
     public function index(Request $request)
     {
-        $query = trim($request->input('query'));
+        $query = trim($request->input('search'));
         $paginationLimit = config('pagination.articles', 10);
 
         if ($query) {
@@ -24,27 +24,10 @@ class ArticleController extends Controller
                 ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
                 ->with(['member', 'tags'])
                 ->paginate($paginationLimit)
-                ->appends(['query' => $query]);
+                ->appends(['search' => $query]);
         } else {
             $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
         }
-
-        $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
-
-        return view('member.articles.index', compact('articles', 'message'));
-    }
-
-    public function search(Request $request)
-    {
-        $query = trim($request->input('query'));
-        $paginationLimit = config('pagination.pagination_limit', 10);
-
-        $escapedQuery = $this->escapeLike($query);
-        $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
-            ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
-            ->with(['member', 'tags'])
-            ->paginate($paginationLimit)
-            ->appends(['query' => $query]);
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
 
