@@ -97,4 +97,27 @@ class ArticleController extends Controller
         // ビューに記事とタグを渡す
         return view('member.articles.edit', compact('article', 'tags'));
     }
+
+    public function update(Request $request, $id)
+    {
+        // バリデーションの適用
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'contents' => 'required|string',
+            'tags' => 'nullable|array',
+            'tags.*' => 'exists:article_tags,id',
+        ]);
+
+        // 記事の更新処理
+        $article = Article::findOrFail($id);
+        $article->title = $request->input('title');
+        $article->contents = $request->input('contents');
+        $article->save();
+
+        // タグの関連付けを更新
+        $article->tags()->sync($request->input('tags', []));
+
+        // 編集後の同じ画面にリダイレクトし、フラッシュメッセージを表示
+        return redirect()->route('articles.edit', $article->id)->with('success', '記事が更新されました');
+    }
 }
