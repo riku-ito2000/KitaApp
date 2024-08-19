@@ -23,3 +23,6 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // 認証が不要なルート
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+
+//記事詳細ページルート
+Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
