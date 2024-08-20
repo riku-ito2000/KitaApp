@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Member\ArticleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,12 +20,14 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [LoginController::class, 'login']);
 });
 
-// ログアウトルート（認証が必要）
+// ログアウトルート
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+// 認証が不要なルート
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 
 // 認証が必要なルート
 Route::middleware('auth')->group(function () {
-    Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 
     // プロフィール編集ルート
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,6 +37,3 @@ Route::middleware('auth')->group(function () {
     Route::get('/password_change', [ProfileController::class, 'showPasswordChangeForm'])->name('password.change.form');
     Route::put('/password_change', [ProfileController::class, 'passwordChange'])->name('password.change');
 });
-
-// 記事検索ルート
-Route::get('/search', [ArticleController::class, 'search'])->name('search');
