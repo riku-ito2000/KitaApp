@@ -4,14 +4,33 @@ namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function index()
+    private function escapeLike(string $value): string
     {
-        $articles = Article::with(['member', 'tags'])->paginate(config('pagination.articles'));
+        return addcslashes($value, '%_\\');
+    }
 
-        return view('member.articles.index', compact('articles'));
+    public function index(Request $request)
+    {
+        $query = trim($request->input('search'));
+        $paginationLimit = config('pagination.articles', 10);
 
+        if ($query) {
+            $escapedQuery = $this->escapeLike($query);
+            $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
+                ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
+                ->with(['member', 'tags'])
+                ->paginate($paginationLimit)
+                ->appends(['search' => $query]);
+        } else {
+            $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
+        }
+
+        $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
+
+        return view('member.articles.index', compact('articles', 'message'));
     }
 }
