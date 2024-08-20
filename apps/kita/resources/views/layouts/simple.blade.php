@@ -7,12 +7,12 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Bootstrap CSSの読み込み -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -22,5 +22,12 @@
         @yield('content')
     </div>
 </main>
+
+<!-- jQueryの読み込み -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- BootstrapのJavaScriptファイルの読み込み -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
+
