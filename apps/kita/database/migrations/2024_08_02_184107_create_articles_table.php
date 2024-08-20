@@ -14,7 +14,7 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id'); // ID
+            $table->id(); // ID
             $table->string('title', 255); // タイトル
             $table->mediumText('contents'); // 内容
             $table->unsignedInteger('member_id'); // 会員ID
@@ -22,8 +22,10 @@ class CreateArticlesTable extends Migration
             $table->softDeletes(); // 削除日時
 
             // 外部キー制約
-            $table->foreign('member_id')->references('id')->on('members');
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
         });
+
+
     }
 
     /**

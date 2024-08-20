@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    protected function escapeLike(string $value): string
+    private function escapeLike(string $value): string
     {
         return addcslashes($value, '%_\\');
     }
