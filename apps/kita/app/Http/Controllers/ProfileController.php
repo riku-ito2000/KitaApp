@@ -41,6 +41,6 @@ class ProfileController extends Controller
 
     public function showPasswordChangeForm()
     {
-        return view('profile.password_change');
+        return view('modals.modal_password_change');
     }
 }
