@@ -14,9 +14,9 @@ class CreateArticleTagsTable extends Migration
     public function up()
     {
         Schema::create('article_tags', function (Blueprint $table) {
-            $table->id(); // ここで id を bigint として定義
+            $table->increments('id'); // INT UNSIGNED の primary key
             $table->string('name', 255); // タグの名前
-            $table->timestamps(); // created_at, updated_at
+            $table->timestamps(); // 作成日時、更新日時
         });
     }
 
