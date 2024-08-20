@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -21,7 +22,13 @@ class ProfileController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:members,email,'.$member->id,
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('members')->ignore($member->id),
+            ],
             // 必要に応じて追加のバリデーションルールを追加
         ]);
 
