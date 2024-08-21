@@ -20,7 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/kTcYBfljt0MhGQ5BUsAXO6XvlOHP6FzJnDMEbca+maU1Ea5w5z2kPjszef6USF7GkAzzw2zB1nZzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-PXTWbHxN7cpJRH7L4Q0T/oyQmKOe7OWUMSKgX7qxM4cOyyT5MbIk+c68U/qnGFccGx8r4zhniUPJtC+G5sdnGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 </head>
 <body style="background-color: #e0e0e0;">

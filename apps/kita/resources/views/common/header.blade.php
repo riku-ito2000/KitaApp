@@ -13,8 +13,8 @@
                 @else
                     <!-- ログインしている場合にユーザー名を表示し、クリックでドロップダウンメニューを表示 -->
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none; color: #000;">
-                            {{ Auth::user()->name }}
+                        <a class="btn btn-sm btn-success" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8BC34A; border: 2px solid #8BC34A; border-radius: 10px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                            <i class="far fa-user-circle" style="font-size: 25px;"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('profile.edit') }}">
@@ -25,6 +25,7 @@
                             </a>
                         </div>
                     </li>
+
                 @endguest
             </ul>
         </div>
