@@ -1,4 +1,4 @@
-@extends('layouts.simple')
+@extends('layouts.app')
 
 @section('content')
     <div class="container py-3 d-flex justify-content-center">

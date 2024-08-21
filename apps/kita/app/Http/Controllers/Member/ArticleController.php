@@ -35,23 +35,6 @@ class ArticleController extends Controller
         return view('member.articles.index', compact('articles', 'message'));
     }
 
-    public function search(Request $request)
-    {
-        $query = trim($request->input('query'));
-        $paginationLimit = config('pagination.articles');
-
-        $escapedQuery = $this->escapeLike($query);
-        $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
-            ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
-            ->with(['member', 'tags'])
-            ->paginate($paginationLimit)
-            ->appends(['query' => $query]);
-
-        $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
-
-        return view('articles.index', compact('articles', 'message'));
-    }
-
     public function create()
     {
         // タグを全て取得してビューに渡す
