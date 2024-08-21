@@ -38,10 +38,6 @@
                 <textarea class="form-control" id="contents" name="contents" rows="10" required
                           style="border: 1px solid #5a5; background-color: #ffffff;">{{ old('contents', $article->contents) }}</textarea>
             </div>
-
-            <div class="form-group d-flex justify-content-end">
-                <button type="submit" class="btn" style="background-color: #5a5; color: white; padding: 5px 10px;">保存する</button>
-            </div>
         </form>
     </div>
 @endsection
