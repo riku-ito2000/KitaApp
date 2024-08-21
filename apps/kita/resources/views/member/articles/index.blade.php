@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
-@section('navbar')
-    <!-- このセクションを空にすることで、app.blade.php のナビバーが表示 -->
-@endsection
+@section('title', '記事一覧 - Kita')
 
 @section('container')
+    @if($message)
+        <div class="container py-4" style="max-width: 800px;">
+            <div class="alert alert-warning" style="background-color: #f8d7da; color: #721c24;">
+                {{ $message }}
+            </div>
+        </div>
+    @else
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
-        <!-- ここに一覧画面の内容を記述 -->
+        <!-- 記事が存在する場合のリスト表示 -->
+        @if($articles->isNotEmpty())
         <div class="container mt-3" style="max-width: 800px;">
             <div class="row">
                 <div class="col-md-12">
@@ -45,5 +51,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
+    @endif
 @endsection

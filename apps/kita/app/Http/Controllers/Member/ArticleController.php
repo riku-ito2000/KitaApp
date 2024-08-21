@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    protected function escapeLike(string $value): string
+    private function escapeLike(string $value): string
     {
         return addcslashes($value, '%_\\');
     }
 
     public function index(Request $request)
     {
-        $query = trim($request->input('query'));
+        $query = trim($request->input('search'));
         $paginationLimit = config('pagination.articles', 10);
 
         if ($query) {
@@ -25,31 +25,14 @@ class ArticleController extends Controller
                 ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
                 ->with(['member', 'tags'])
                 ->paginate($paginationLimit)
-                ->appends(['query' => $query]);
+                ->appends(['search' => $query]);
         } else {
-            $articles = Article::with(['member', 'tags'])->paginate(config('pagination.articles'));
+            $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
         }
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
 
         return view('member.articles.index', compact('articles', 'message'));
-    }
-
-    public function search(Request $request)
-    {
-        $query = trim($request->input('query'));
-        $paginationLimit = config('pagination.articles');
-
-        $escapedQuery = $this->escapeLike($query);
-        $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
-            ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
-            ->with(['member', 'tags'])
-            ->paginate($paginationLimit)
-            ->appends(['query' => $query]);
-
-        $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
-
-        return view('articles.index', compact('articles', 'message'));
     }
 
     public function create()
@@ -96,28 +79,5 @@ class ArticleController extends Controller
 
         // ビューに記事とタグを渡す
         return view('member.articles.edit', compact('article', 'tags'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        // バリデーションの適用
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'contents' => 'required|string',
-            'tags' => 'nullable|array',
-            'tags.*' => 'exists:article_tags,id',
-        ]);
-
-        // 記事の更新処理
-        $article = Article::findOrFail($id);
-        $article->title = $request->input('title');
-        $article->contents = $request->input('contents');
-        $article->save();
-
-        // タグの関連付けを更新
-        $article->tags()->sync($request->input('tags', []));
-
-        // 編集後の同じ画面にリダイレクトし、フラッシュメッセージを表示
-        return redirect()->route('articles.edit', $article->id)->with('success', '記事が更新されました');
     }
 }
