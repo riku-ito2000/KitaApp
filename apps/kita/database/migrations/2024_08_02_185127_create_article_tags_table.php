@@ -14,11 +14,12 @@ class CreateArticleTagsTable extends Migration
     public function up()
     {
         Schema::create('article_tags', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 255);
-            $table->timestamps();
+            $table->increments('id'); // INT UNSIGNED の primary key
+            $table->string('name', 255); // タグの名前
+            $table->timestamps(); // 作成日時、更新日時
         });
     }
+
 
     /**
      * Reverse the migrations.

@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    protected function escapeLike(string $value): string
+    private function escapeLike(string $value): string
     {
         return addcslashes($value, '%_\\');
     }
 
     public function index(Request $request)
     {
-        $query = trim($request->input('query'));
+        $query = trim($request->input('search'));
         $paginationLimit = config('pagination.articles', 10);
 
         if ($query) {
@@ -24,7 +24,7 @@ class ArticleController extends Controller
                 ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
                 ->with(['member', 'tags'])
                 ->paginate($paginationLimit)
-                ->appends(['query' => $query]);
+                ->appends(['search' => $query]);
         } else {
             $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
         }

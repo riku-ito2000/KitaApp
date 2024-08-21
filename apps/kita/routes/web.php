@@ -24,7 +24,7 @@ Route::middleware('guest')->group(function () {
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // 認証が不要なルート
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles', [ArticleController::class, 'index'])->name('member.articles.index');
 
 // 認証が必要なルート
 Route::middleware('auth')->group(function () {
