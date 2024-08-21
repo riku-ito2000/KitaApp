@@ -12,18 +12,26 @@
             </form>
             <ul class="navbar-nav ms-auto">
                 @guest
-                    <!-- ログインしていない場合に表示されるナビゲーションリンク -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                    <!-- ログインしていない場合に表示されるアイコン -->
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-sm btn-success" href="#" id="guestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8BC34A; border: 2px solid #8BC34A; border-radius: 10px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                            <i class="fas fa-sign-in-alt" style="font-size: 25px;"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="guestDropdown">
+                            <a class="dropdown-item" href="{{ route('register') }}">{{ __('新規会員登録') }}</a>
+                            <a class="dropdown-item" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                        </div>
                     </li>
                 @else
-                    <!-- ログインしている場合に表示されるナビゲーションリンク -->
+                    <!-- ログインしている場合にユーザー名を表示し、クリックでドロップダウンメニューを表示 -->
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
+                        <a class="btn btn-sm btn-success" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8BC34A; border: 2px solid #8BC34A; border-radius: 10px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                            <i class="far fa-user-circle" style="font-size: 25px;"></i>
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                プロフィール編集
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}">
                                 {{ __('ログアウト') }}
                             </a>
@@ -31,7 +39,18 @@
                     </li>
                 @endguest
             </ul>
-
         </div>
     </nav>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdownToggle = document.getElementById('navbarDropdown');
+        var dropdownMenu = dropdownToggle.nextElementSibling;
+
+        dropdownToggle.addEventListener('click', function(event) {
+            event.preventDefault();
+            dropdownMenu.classList.toggle('show');
+        });
+    });
+</script>
