@@ -12,9 +12,15 @@
             </form>
             <ul class="navbar-nav ms-auto">
                 @guest
-                    <!-- ログインしていない場合に表示されるナビゲーションリンク -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                    <!-- ログインしていない場合に表示されるアイコン -->
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-sm btn-success" href="#" id="guestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8BC34A; border: 2px solid #8BC34A; border-radius: 10px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                            <i class="fas fa-sign-in-alt" style="font-size: 25px;"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="guestDropdown">
+                            <a class="dropdown-item" href="{{ route('register') }}">{{ __('新規会員登録') }}</a>
+                            <a class="dropdown-item" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                        </div>
                     </li>
                 @else
                     <!-- ログインしている場合にユーザー名を表示し、クリックでドロップダウンメニューを表示 -->
@@ -31,7 +37,6 @@
                             </a>
                         </div>
                     </li>
-
                 @endguest
             </ul>
         </div>
