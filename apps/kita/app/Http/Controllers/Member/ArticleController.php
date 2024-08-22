@@ -81,7 +81,7 @@ class ArticleController extends Controller
         return view('member.articles.edit', compact('article', 'tags'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
         // バリデーションの適用
         $request->validate([
@@ -92,10 +92,10 @@ class ArticleController extends Controller
         ]);
 
         // 記事の更新処理
-        $article = Article::findOrFail($id);
-        $article->title = $request->input('title');
-        $article->contents = $request->input('contents');
-        $article->save();
+        $article->update([
+            'title' => $request->input('title'),
+            'contents' => $request->input('contents'),
+        ]);
 
         // タグの関連付けを更新
         $article->tags()->sync($request->input('tags', []));

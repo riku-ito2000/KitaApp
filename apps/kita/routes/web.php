@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
     Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
     Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-    Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
+    Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
 
     // プロフィール編集ルート
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
