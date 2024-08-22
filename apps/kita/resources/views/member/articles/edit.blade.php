@@ -7,24 +7,9 @@
 @section('container')
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
         <!-- フラッシュメッセージ -->
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        @include('common.messages')
 
-        <!-- バリデーションエラーメッセージの表示 -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('articles.update', $article->id) }}">
+        <form method="POST" action="{{ route('member.articles.update', $article->id) }}">
             @csrf
             @method('PUT')
 

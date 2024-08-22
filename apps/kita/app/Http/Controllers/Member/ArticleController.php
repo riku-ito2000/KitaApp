@@ -17,7 +17,7 @@ class ArticleController extends Controller
      * @param string $value
      * @return string
      */
-    protected function escapeLike(string $value): string
+    private function escapeLike(string $value): string
     {
         return addcslashes($value, '%_\\');
     }
@@ -30,7 +30,7 @@ class ArticleController extends Controller
      */
     public function index(Request $request): View
     {
-        $query = trim($request->input('query'));
+        $query = trim($request->input('search'));
         $paginationLimit = config('pagination.articles', 10);
 
         if ($query) {
@@ -39,9 +39,9 @@ class ArticleController extends Controller
                 ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
                 ->with(['member', 'tags'])
                 ->paginate($paginationLimit)
-                ->appends(['query' => $query]);
+                ->appends(['search' => $query]);
         } else {
-            $articles = Article::with(['member', 'tags'])->paginate(config('pagination.articles'));
+            $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
         }
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
@@ -58,6 +58,7 @@ class ArticleController extends Controller
     {
         $tags = ArticleTag::all();
 
+        // ビューに $tags を渡す
         return view('member.articles.create', compact('tags'));
     }
 
@@ -69,22 +70,26 @@ class ArticleController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        // バリデーションの適用
+        $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'contents' => 'required|string',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:article_tags,id', // 存在するタグかどうかの検証
         ]);
 
-        $article = new Article;
-        $article->title = $request->input('title');
-        $article->contents = $request->input('contents');
-        $article->member_id = auth()->id();
-        $article->save();
+        // member_idをリクエストデータに追加
+        $validatedData['member_id'] = auth()->id();
 
+        // 記事の保存処理
+        $article = new Article;
+        $article->fill($validatedData)->save(); // fillメソッドを使用して複数のカラムに値をセット
+
+        // タグの関連付け
         $article->tags()->sync($request->input('tags', []));
 
-        return redirect()->route('articles.edit', $article->id)->with('success', '記事投稿が完了しました');
+        // 新しく作成した記事の編集ページにリダイレクト
+        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事投稿が完了しました');
     }
 
     /**
@@ -95,9 +100,13 @@ class ArticleController extends Controller
      */
     public function edit(int $id): View
     {
+        // 指定されたIDに基づいて記事を取得
         $article = Article::with('tags')->findOrFail($id);
+
+        // すべてのタグを取得
         $tags = ArticleTag::all();
 
+        // ビューに記事とタグを渡す
         return view('member.articles.edit', compact('article', 'tags'));
     }
 
@@ -110,6 +119,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article): RedirectResponse
     {
+        // バリデーションの適用
         $request->validate([
             'title' => 'required|string|max:255',
             'contents' => 'required|string',
@@ -124,6 +134,6 @@ class ArticleController extends Controller
 
         $article->tags()->sync($request->input('tags', []));
 
-        return redirect()->route('articles.edit', $article->id)->with('success', '記事が更新されました');
+        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事が更新されました');
     }
 }
