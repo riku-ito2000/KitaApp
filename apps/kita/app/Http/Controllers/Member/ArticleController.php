@@ -55,7 +55,7 @@ class ArticleController extends Controller
         ]);
 
         // member_idをリクエストデータに追加
-        $validatedData = $request->merge(['member_id' => auth()->id()])->all();
+        $validatedData['member_id'] = auth()->id();
 
         // 記事の保存処理
         $article = new Article;
