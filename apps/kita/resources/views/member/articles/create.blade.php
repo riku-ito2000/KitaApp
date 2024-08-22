@@ -28,7 +28,7 @@
                 <select multiple class="form-control @error('tags') is-invalid @enderror" id="tags" name="tags[]"
                         style="border: 1px solid #5a5; background-color: #ffffff;">
                     @foreach($tags as $tag)
-                        <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
                 </select>
                 @error('tags')
