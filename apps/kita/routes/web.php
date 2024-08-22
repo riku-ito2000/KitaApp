@@ -26,8 +26,12 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 // 認証が不要なルート
 Route::get('/articles', [ArticleController::class, 'index'])->name('member.articles.index');
 
-// 認証が必要なルート
 Route::middleware('auth')->group(function () {
+
+    // 記事作成、編集、更新、削除ルート（member prefixを使用）
+    Route::prefix('member')->name('member.')->group(function () {
+        Route::resource('articles', ArticleController::class)->except(['index', 'show']);
+    });
 
     // プロフィール編集ルート
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
