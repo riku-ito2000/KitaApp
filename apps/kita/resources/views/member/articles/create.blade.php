@@ -7,24 +7,9 @@
 @section('container')
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
         <!-- フラッシュメッセージ -->
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        @include('common.messages')
 
-        <!-- バリデーションエラーメッセージの表示 -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('articles.store') }}">
+        <form method="POST" action="{{ route('member.articles.store') }}">
             @csrf
 
             <div class="form-group mb-4">
@@ -43,7 +28,7 @@
                 <select multiple class="form-control @error('tags') is-invalid @enderror" id="tags" name="tags[]"
                         style="border: 1px solid #5a5; background-color: #ffffff;">
                     @foreach($tags as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                     @endforeach
                 </select>
                 @error('tags')

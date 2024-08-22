@@ -7,13 +7,9 @@
 @section('container')
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
         <!-- フラッシュメッセージ -->
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        @include('common.messages')
 
-        <form method="POST" action="{{ route('articles.store')}}">
+        <form method="POST" action="{{ route('member.articles.store')}}">
             @csrf
             <div class="form-group mb-4">
                 <label for="title">タイトル</label>

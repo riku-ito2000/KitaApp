@@ -4,7 +4,7 @@
             <div class="row w-100 align-items-center">
                 <!-- Kitaボタン -->
                 <div class="col-auto">
-                    <a class="navbar-brand kita-brand" href="{{ url('/') }}" style="background-color: #5a5; color: white; border-radius: 50px; padding: 10px 40px; font-size: 1.5rem;">
+                    <a class="navbar-brand kita-brand" href="{{ url('/') }}" style="background-color: #5a5; color: white; border-radius: 50px; padding: 10px 30px; font-size: 1.5rem;">
                         {{ config('app.name', 'Kita') }}
                     </a>
                 </div>
@@ -26,7 +26,7 @@
                 @auth
                     <!-- 記事作成ボタン -->
                     <div class="col-auto">
-                        <a class="btn btn-sm btn-success create-article-btn" href="{{ route('articles.create') }}" style="background-color: white; border: 2px solid #5a5; color: black; padding: 8px 30px;">
+                        <a class="btn btn-sm btn-success create-article-btn" href="{{ route('member.articles.create') }}" style="background-color: white; border: 2px solid #5a5; color: black; padding: 8px 20px;">
                             <span class="d-none d-md-inline">記事を作成する</span> <!-- 大きな画面で表示 -->
                             <i class="fas fa-edit d-md-none"></i> <!-- 小さな画面でアイコン表示 -->
                         </a>

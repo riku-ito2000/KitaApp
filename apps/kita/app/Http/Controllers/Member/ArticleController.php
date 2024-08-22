@@ -47,26 +47,26 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         // バリデーションの適用
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'contents' => 'required|string',
-            // タグは任意
             'tags' => 'nullable|array',
-            'tags.*' => 'exists:article_tags,id', // 存在するタグかどうかの検証
+            'tags.*' => 'exists:article_tags,name', // 存在するタグかどうかの検証
         ]);
+
+        // member_idをリクエストデータに追加
+        $validatedData = $request->merge(['member_id' => auth()->id()])->all();
 
         // 記事の保存処理
         $article = new Article;
-        $article->title = $request->input('title');
-        $article->contents = $request->input('contents');
-        $article->member_id = auth()->id();
-        $article->save();
+        $article->fill($validatedData)->save(); // fillメソッドを使用して複数のカラムに値をセット
 
-        // タグの関連付け
-        $article->tags()->sync($request->input('tags', []));
+        // タグの名前からIDを取得して関連付け
+        $tagIds = ArticleTag::whereIn('name', $request->input('tags', []))->pluck('id');
+        $article->tags()->sync($tagIds);
 
         // 新しく作成した記事の編集ページにリダイレクト
-        return redirect()->route('articles.edit', $article->id)->with('success', '記事投稿が完了しました');
+        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事投稿が完了しました');
     }
 
     public function edit($id)

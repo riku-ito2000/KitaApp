@@ -3,13 +3,9 @@
 @section('title', '記事一覧 - Kita')
 
 @section('container')
-    @if($message)
-        <div class="container py-4" style="max-width: 800px;">
-            <div class="alert alert-warning" style="background-color: #f8d7da; color: #721c24;">
-                {{ $message }}
-            </div>
-        </div>
-    @else
+    <!-- フラッシュメッセージ -->
+    @include('common.messages')
+
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
         <!-- 記事が存在する場合のリスト表示 -->
         @if($articles->isNotEmpty())
@@ -53,5 +49,4 @@
         </div>
         @endif
     </div>
-    @endif
 @endsection
