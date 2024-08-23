@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Member;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleTag;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -71,12 +72,7 @@ class ArticleController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // バリデーションの適用
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'contents' => 'required|string',
-            'tags' => 'nullable|array',
-            'tags.*' => 'exists:article_tags,id', // 存在するタグかどうかの検証
-        ]);
+        $validatedData = $this->validateArticle($request);
 
         // member_idをリクエストデータに追加
         $validatedData['member_id'] = auth()->id();
@@ -95,13 +91,14 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified article.
      *
-     * @param int $id
+     * @param Article $article
      * @return View
+     * @throws AuthorizationException
      */
-    public function edit(int $id): View
+    public function edit(Article $article): View
     {
-        // 指定されたIDに基づいて記事を取得
-        $article = Article::with('tags')->findOrFail($id);
+        // 記事の所有権を確認
+        $this->authorizeArticle($article);
 
         // すべてのタグを取得
         $tags = ArticleTag::all();
@@ -116,24 +113,52 @@ class ArticleController extends Controller
      * @param Request $request
      * @param Article $article
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(Request $request, Article $article): RedirectResponse
     {
+        // 記事の所有権を確認
+        $this->authorizeArticle($article);
+
         // バリデーションの適用
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'contents' => 'required|string',
-            'tags' => 'nullable|array',
-            'tags.*' => 'exists:article_tags,id',
-        ]);
+        $validatedData = $this->validateArticle($request);
 
         $article->update([
-            'title' => $request->input('title'),
-            'contents' => $request->input('contents'),
+            'title' => $validatedData['title'],
+            'contents' => $validatedData['contents'],
         ]);
 
         $article->tags()->sync($request->input('tags', []));
 
         return redirect()->route('member.articles.edit', $article->id)->with('success', '記事が更新されました');
+    }
+
+    /**
+     * Validate the article input.
+     *
+     * @param Request $request
+     * @return array
+     */
+    private function validateArticle(Request $request): array
+    {
+        return $request->validate([
+            'title' => 'required|string|max:255',
+            'contents' => 'required|string',
+            'tags' => 'nullable|array',
+            'tags.*' => 'exists:article_tags,id',
+        ]);
+    }
+
+    /**
+     * Check if the authenticated user owns the article.
+     *
+     * @param Article $article
+     * @throws AuthorizationException
+     */
+    private function authorizeArticle(Article $article): void
+    {
+        if ($article->member_id !== auth()->id()) {
+            abort(403, 'この記事を編集する権限がありません。');
+        }
     }
 }
