@@ -82,10 +82,11 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        // 指定されたIDに基づいて記事を取得
-        $article = Article::with(['member', 'tags'])->findOrFail($id);
+        $article = Article::with('tags', 'member')->findOrFail($id);
 
-        // 記事詳細ページのビューを返す
-        return view('member.articles.show', compact('article'));
+        // 該当記事のコメントを取得
+        $comments = $article->comments()->latest()->get();
+
+        return view('member.articles.show', compact('article', 'comments'));
     }
 }

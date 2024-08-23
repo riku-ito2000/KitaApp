@@ -38,4 +38,15 @@
         <!-- 記事の内容 -->
         <p style="white-space: pre-line;">{{ $article->contents }}</p>
     </div>
+
+    <!-- コメントセクション -->
+    <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
+        <h3 class="mb-4" style="font-weight: 700;">コメント</h3>
+
+        @foreach($comments as $comment)
+            <div class="mb-4 p-3" style="border: 1px solid #ddd; border-radius: 5px;">
+                <small class="text-muted">{{ $comment->user->name }}が{{ $comment->created_at->format('Y年m月d日') }}に投稿</small>
+                <p class="mt-2">{{ $comment->content }}</p>
+            </div>
+    @endforeach
 @endsection
