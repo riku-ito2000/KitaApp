@@ -43,10 +43,7 @@
                         <label for="password">パスワード</label>
                         <div class="d-flex align-items-center">
                             <span class="me-3">*****</span>
-                            <!-- モーダルをトリガーするボタン -->
-                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#passwordChangeModal" style="background-color: #8BC34A; color: white; border-radius: 25px;">
-                                パスワードを変更する
-                            </button>
+                            <!-- パスワード変更をするボタンを書く予定 -->
                         </div>
                     </div>
 
@@ -57,16 +54,4 @@
             </div>
         </div>
     </div>
-    <!-- パスワード変更モーダルをインクルード -->
-    @include('modals.modal_password_change')
-
-    <!-- エラーメッセージがある場合にモーダルを自動的に表示 -->
-    @if ($errors->has('new_password') || $errors->has('new_password_confirmation'))
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var myModal = new bootstrap.Modal(document.getElementById('passwordChangeModal'), {});
-                myModal.show();
-            });
-        </script>
-    @endif
 @endsection
