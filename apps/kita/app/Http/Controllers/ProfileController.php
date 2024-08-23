@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -49,5 +49,21 @@ class ProfileController extends Controller
     public function showPasswordChangeForm()
     {
         return view('modals.modal_password_change');
+    }
+
+    public function passwordChange(Request $request)
+    {
+        $request->validate([
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $member = Auth::user();
+
+        // 現在のパスワード確認を省略
+
+        $member->password = Hash::make($request->new_password);
+        $member->save();
+
+        return redirect()->route('profile.edit')->with('success', 'パスワードを更新しました');
     }
 }
