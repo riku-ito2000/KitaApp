@@ -40,6 +40,9 @@ Route::middleware('auth')->group(function () {
     // パスワード変更ルート
     Route::get('/password_change', [ProfileController::class, 'showPasswordChangeForm'])->name('password.change.form');
     Route::put('/password_change', [ProfileController::class, 'passwordChange'])->name('password.change');
+
+    // コメント投稿
+    Route::post('/comments', [App\Http\Controllers\Comment\CommentController::class, 'store'])->name('comments.store');
 });
 
 //記事詳細ページルート

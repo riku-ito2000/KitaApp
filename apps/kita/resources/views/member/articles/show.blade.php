@@ -58,10 +58,33 @@
             <hr style="border-top: 2px solid #666; margin: 0;">
         </div>
 
-        <!-- 別のコンテナ（例: コメントフォームや他の情報用） -->
-        <div class="container">
-            <!-- 他のコンテンツやフォームをここに追加できます -->
-            <p>コメント投稿フォーム追加予定</p>
-        </div>
+        <!-- コメント投稿フォーム -->
+        @auth
+            <div class="container mt-4" style="max-width: 800px; padding: 20px;">
+                <form action="{{ route('comments.store') }}" method="POST" class="d-flex align-items-end">
+                    @csrf
+                    <!-- 隠しフィールドで article_id を送信 -->
+                    <input type="hidden" name="article_id" value="{{ $article->id }}">
+                    <div class="flex-grow-1 me-3">
+                        <textarea class="form-control @error('comments') is-invalid @enderror" id="comments" name="comments" rows="3" placeholder="コメントを入力" style="border: 1px solid #28a745; border-radius: 5px; background-color: white;"></textarea>
+                        @error('comments')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div>
+                        <button type="submit" class="btn" style="color: #28a745; border: 1px solid #28a745; background-color: transparent; border-radius: 25px; padding: 8px 20px;">
+                            コメント
+                        </button>
+                    </div>
+                </form>
+            </div>
+        @else
+            <!-- ログインを促すメッセージ -->
+            <div class="container mt-4" style="max-width: 800px;">
+                <p class="text-muted text-center">コメントを投稿するには、<a href="{{ route('login') }}" style="color: #28a745;">ログイン</a>してください。</p>
+            </div>
+        @endauth
     </div>
 @endsection
