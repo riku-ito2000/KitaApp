@@ -4,23 +4,10 @@
 
 @section('container')
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
+        <!-- 記事セクション -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- 記事タイトル -->
             <h1 class="mb-3" style="font-weight: 700; font-size: 2rem;">{{ $article->title }}</h1>
-
-            <!-- 編集ボタンと削除ボタン -->
-{{--            <div>--}}
-{{--                <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-success me-2" style="background-color: #6c757d; border: none;">--}}
-{{--                    編集する--}}
-{{--                </a>--}}
-{{--                <form action="{{ route('articles.destroy', $article->id) }}" method="POST" style="display: inline;">--}}
-{{--                    @csrf--}}
-{{--                    @method('DELETE')--}}
-{{--                    <button type="submit" class="btn btn-danger" style="background-color: #dc3545; border: none;">--}}
-{{--                        削除する--}}
-{{--                    </button>--}}
-{{--                </form>--}}
-{{--            </div>--}}
         </div>
 
         <!-- 投稿者情報 -->
@@ -40,13 +27,41 @@
     </div>
 
     <!-- コメントセクション -->
-    <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
-        <h3 class="mb-4" style="font-weight: 700;">コメント</h3>
+    <div class="container mt-5 py-4" style="background-color: #ffffff; max-width: 800px; border: 1px solid #ddd; border-radius: 5px;">
+        <!-- アンダーラインを引く部分 -->
+        <div style="margin-left: -13px; margin-right: -13px;">
+            <h3 class="mb-4" style="font-weight: 700; padding-left: 16px; padding-right: 16px;">コメント</h3>
+            <!-- アンダーライン -->
+            <hr style="border-top: 2px solid #666; margin: 0;">
+        </div>
 
-        @foreach($comments as $comment)
-            <div class="mb-4 p-3" style="border: 1px solid #ddd; border-radius: 5px;">
-                <small class="text-muted">{{ $comment->user->name }}が{{ $comment->created_at->format('Y年m月d日') }}に投稿</small>
-                <p class="mt-2">{{ $comment->content }}</p>
-            </div>
-    @endforeach
+        <!-- コメントのリストコンテナ -->
+        <div class="container mb-4" style="padding-left: 5px; padding-right: 5px;">
+            @if($comments->isEmpty())
+                <p class="text-center text-muted" style="font-size: 1.0rem; font-weight: 700;">コメントがありません。</p>
+            @else
+                @foreach($comments as $comment)
+                    <div class="mb-4 p-3" style="background-color: #ffffff;">
+                        <small class="text-muted">{{ $comment->member->name }}が{{ $comment->created_at->format('Y年m月d日') }}に投稿</small>
+                        <p class="mt-2">{{ $comment->contents }}</p>
+                    </div>
+                    @if (!$loop->last)
+                        <!-- 区切り線 -->
+                        <hr style="border-top: 2px solid #666; width: 100%; margin-left: 0;">
+                    @endif
+                @endforeach
+            @endif
+        </div>
+
+        <!-- 最後のアンダーライン用のコンテナ -->
+        <div style="margin-left: -13px; margin-right: -13px;">
+            <hr style="border-top: 2px solid #666; margin: 0;">
+        </div>
+
+        <!-- 別のコンテナ（例: コメントフォームや他の情報用） -->
+        <div class="container">
+            <!-- 他のコンテンツやフォームをここに追加できます -->
+            <p>コメント投稿フォーム追加予定</p>
+        </div>
+    </div>
 @endsection

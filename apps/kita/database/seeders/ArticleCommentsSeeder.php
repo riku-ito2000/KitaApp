@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Article;
 use App\Models\ArticleComment;
+use App\Models\Member;
 use Illuminate\Database\Seeder; // モデルをインポート
 
 class ArticleCommentsSeeder extends Seeder
@@ -14,13 +16,17 @@ class ArticleCommentsSeeder extends Seeder
      */
     public function run()
     {
-        // 例: ダミーコメントを10個作成する
-        for ($i = 1; $i <= 10; $i++) {
-            ArticleComment::create([
-                'contents' => 'これはダミーコメント '.$i,
-                'member_id' => \App\Models\Member::inRandomOrder()->first()->id,
-                'article_id' => \App\Models\Article::inRandomOrder()->first()->id,
-            ]);
+        $articles = Article::all();
+
+        foreach ($articles as $article) {
+            // 各記事に対して10個のダミーコメントを作成
+            for ($i = 1; $i <= 10; $i++) {
+                ArticleComment::create([
+                    'contents' => 'これはダミーコメント '.$i,
+                    'member_id' => Member::inRandomOrder()->first()->id,
+                    'article_id' => $article->id,
+                ]);
+            }
         }
     }
 }
