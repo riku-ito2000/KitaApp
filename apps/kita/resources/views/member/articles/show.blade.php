@@ -7,20 +7,6 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- 記事タイトル -->
             <h1 class="mb-3" style="font-weight: 700; font-size: 2rem;">{{ $article->title }}</h1>
-
-            <!-- 編集ボタンと削除ボタン -->
-{{--            <div>--}}
-{{--                <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-success me-2" style="background-color: #6c757d; border: none;">--}}
-{{--                    編集する--}}
-{{--                </a>--}}
-{{--                <form action="{{ route('articles.destroy', $article->id) }}" method="POST" style="display: inline;">--}}
-{{--                    @csrf--}}
-{{--                    @method('DELETE')--}}
-{{--                    <button type="submit" class="btn btn-danger" style="background-color: #dc3545; border: none;">--}}
-{{--                        削除する--}}
-{{--                    </button>--}}
-{{--                </form>--}}
-{{--            </div>--}}
         </div>
 
         <!-- 投稿者情報 -->
@@ -36,6 +22,6 @@
         </div>
 
         <!-- 記事の内容 -->
-        <p style="white-space: pre-line;">{{ $article->contents }}</p>
+        <p style="white-space: pre-line;">{!! nl2br(e($article->contents)) !!}</p>
     </div>
 @endsection
