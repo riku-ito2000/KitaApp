@@ -9,11 +9,19 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    /**
+     * @param string $value
+     * @return string
+     */
     private function escapeLike(string $value): string
     {
         return addcslashes($value, '%_\\');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         $query = trim($request->input('search'));
@@ -35,6 +43,9 @@ class ArticleController extends Controller
         return view('member.articles.index', compact('articles', 'message'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create()
     {
         // タグを全て取得してビューに渡す
@@ -44,6 +55,10 @@ class ArticleController extends Controller
         return view('member.articles.create', compact('tags'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         // バリデーションの適用
@@ -68,6 +83,10 @@ class ArticleController extends Controller
         return redirect()->route('member.articles.edit', $article->id)->with('success', '記事投稿が完了しました');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         // 指定されたIDに基づいて記事を取得
@@ -80,6 +99,10 @@ class ArticleController extends Controller
         return view('member.articles.edit', compact('article', 'tags'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show($id)
     {
         // 記事を取得し、関連するタグ、メンバー、およびコメントをロードする
