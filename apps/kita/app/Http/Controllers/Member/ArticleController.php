@@ -88,7 +88,7 @@ class ArticleController extends Controller
         $article->tags()->sync($request->input('tags', []));
 
         // 新しく作成した記事の編集ページにリダイレクト
-        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事投稿が完了しました');
+        return redirect()->route('articles.edit', $article->id)->with('success', '記事投稿が完了しました');
     }
 
     /**
@@ -142,7 +142,7 @@ class ArticleController extends Controller
 
         $article->tags()->sync($request->input('tags', []));
 
-        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事が更新されました');
+        return redirect()->route('articles.edit', $article->id)->with('success', '記事が更新されました');
     }
 
     /**

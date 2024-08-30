@@ -9,7 +9,7 @@
         <!-- フラッシュメッセージ -->
         @include('common.messages')
 
-        <form method="POST" action="{{ route('member.articles.update', $article->id) }}">
+        <form method="POST" action="{{ route('articles.update', $article->id) }}">
             @csrf
             @method('PUT')
 
@@ -53,7 +53,9 @@
             </div>
 
             <div class="form-group d-flex justify-content-end">
-                <button type="submit" class="btn" style="background-color: #5a5; color: white; padding: 5px 10px;">保存する</button>
+                <button type="submit" class="btn btn-success rounded-pill py-2 px-3 border-0" style="background-color: #8BC34A;">
+                    更新する
+                </button>
             </div>
         </form>
     </div>

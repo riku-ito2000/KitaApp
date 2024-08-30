@@ -8,8 +8,10 @@
         @include('common.messages')
         @if (auth()->check() && auth()->id() === $article->member_id)
             <!-- 編集ボタン -->
-            <div class="d-flex justify-content-end mb-3" style="position: relative; top: -5px;">
-                <a href="{{ route('member.articles.edit', $article->id) }}" class="btn btn-success me-2" style="background-color: #8BC34A; border: none; border-radius: 18px; padding: 8px 18px;">
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{{ route('articles.edit', $article->id) }}"
+                   class="btn rounded-pill py-2 px-4"
+                   style="background-color: #8BC34A; color: white; border: 2px solid #8BC34A;">
                     編集する
                 </a>
             </div>
