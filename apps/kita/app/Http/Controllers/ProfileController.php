@@ -60,8 +60,12 @@ class ProfileController extends Controller
 
         $member = Auth::user();
 
-        // 現在のパスワード確認を省略
+        // 新しいパスワードが現在のパスワードと同じかどうかを確認
+        if (Hash::check($request->new_password, $member->password)) {
+            return redirect()->route('profile.edit')->withErrors(['new_password' => '新しいパスワードが現在のパスワードと同じです。別のパスワードを使用してください。']);
+        }
 
+        // パスワードを更新
         $member->password = Hash::make($request->new_password);
         $member->save();
 
