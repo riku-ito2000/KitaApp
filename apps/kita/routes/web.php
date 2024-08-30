@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Member\ArticleController;
+use App\Http\Controllers\Member\Auth\LoginController;
+use App\Http\Controllers\Member\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +41,11 @@ Route::middleware('auth')->group(function () {
     // パスワード変更ルート
     Route::get('/password_change', [ProfileController::class, 'showPasswordChangeForm'])->name('password.change.form');
     Route::put('/password_change', [ProfileController::class, 'passwordChange'])->name('password.change');
+});
+
+//管理者ログイン
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('login', [AdminLoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AdminLoginController::class, 'login']);
+    Route::get('logout', [AdminLoginController::class, 'logout'])->name('logout');
 });
