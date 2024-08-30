@@ -22,7 +22,7 @@
                                             {{ $article->member ? $article->member->name : 'Unknown' }}が{{ $article->created_at->format('Y年m月d日') }}に投稿
                                         </small>
                                         <!-- タイトルのフォントサイズを大きく -->
-                                        <a href="{{ route('articles.show', $article->id) }}" class="list-group-item" style="text-decoration: none; color: inherit; border: none; background-color: transparent; padding: 0; margin-bottom:-10px">
+                                        <a href="{{ route('member.articles.show', $article->id) }}" class="list-group-item" style="text-decoration: none; color: inherit; border: none; background-color: transparent; padding: 0; margin-bottom:-10px">
                                             <!-- リンク内で記事の概要を表示 -->
                                             <h5 class="mb-1" style="font-weight: 800; color: #343a40; font-size: 1.5rem; margin-top: -3px;">
                                                 {{ $article->title }}
