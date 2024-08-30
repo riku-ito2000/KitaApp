@@ -39,10 +39,13 @@ class ArticleController extends Controller
             $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
                 ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
                 ->with(['member', 'tags'])
+                ->orderBy('created_at', 'desc') // 新しい順に並べ替え
                 ->paginate($paginationLimit)
                 ->appends(['search' => $query]);
         } else {
-            $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
+            $articles = Article::with(['member', 'tags'])
+                ->orderBy('created_at', 'desc') // 新しい順に並べ替え
+                ->paginate($paginationLimit);
         }
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
@@ -107,7 +110,6 @@ class ArticleController extends Controller
         return view('member.articles.edit', compact('article', 'tags'));
     }
 
-
     public function show(Article $article)
     {
         // 'member' と 'tags' のリレーションシップをロード
@@ -115,6 +117,7 @@ class ArticleController extends Controller
 
         // 記事詳細ページのビューを返す
         return view('member.articles.show', compact('article'));
+    }
 
     /**
      * Update the specified article in storage.
