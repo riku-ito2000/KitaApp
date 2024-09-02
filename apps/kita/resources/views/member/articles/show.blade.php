@@ -43,7 +43,7 @@
                 @foreach($comments as $comment)
                     <div class="mb-4 p-3" style="background-color: #ffffff;">
                         <small class="text-muted">{{ $comment->member->name }}が{{ $comment->created_at->format('Y年m月d日') }}に投稿</small>
-                        <p class="mt-2">{{ $comment->contents }}</p>
+                        <p class="mt-2">{!! nl2br(e($comment->contents)) !!}</p>
                     </div>
                     @if (!$loop->last)
                         <!-- 区切り線 -->
