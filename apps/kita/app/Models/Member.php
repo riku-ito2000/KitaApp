@@ -36,4 +36,11 @@ class Member extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    // app/Models/Member.php
+
+    public function comments()
+    {
+        return $this->hasMany(ArticleComment::class);
+    }
 }

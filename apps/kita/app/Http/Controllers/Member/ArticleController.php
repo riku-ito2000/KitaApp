@@ -60,6 +60,7 @@ class ArticleController extends Controller
      */
     public function create(): View
     {
+        // タグを全て取得してビューに渡す
         $tags = ArticleTag::all();
 
         // ビューに $tags を渡す
@@ -113,10 +114,12 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         // 'member' と 'tags' のリレーションシップをロード
-        $article->load(['member', 'tags']);
+        $article->load(['member', 'tags', 'comments.member']);
 
-        // 記事詳細ページのビューを返す
-        return view('member.articles.show', compact('article'));
+        // コメントを最新の順に並べ替える（必要であれば）
+        $comments = $article->comments->sortByDesc('created_at');
+
+        return view('member.articles.show', compact('article', 'comments'));
     }
 
     /**
