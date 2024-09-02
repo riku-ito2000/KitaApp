@@ -6,11 +6,8 @@
     <div class="container-fluid pt-2 pb-4">
         <div class="row justify-content-center" style="margin: 0;">
             <div class="col-md-8" style="background-color: white; padding: 30px; border-radius: 10px; max-width: 800px;">
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                <!-- フラッシュメッセージ -->
+                @include('common.messages')
 
                 <h2 class="mb-2" style="padding-bottom: 5px; margin-bottom: 10px;">プロフィール編集</h2>
                 <hr style="margin: 0; margin-bottom: 20px;">
@@ -43,7 +40,10 @@
                         <label for="password">パスワード</label>
                         <div class="d-flex align-items-center">
                             <span class="me-3">*****</span>
-                            <!-- パスワード変更をするボタンを書く予定 -->
+                            <!-- モーダルをトリガーするボタン -->
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#passwordChangeModal" style="background-color: #5a5; color: white; border: none; border-radius: 25px;">
+                                パスワードを変更する
+                            </button>
                         </div>
                     </div>
 
@@ -54,4 +54,6 @@
             </div>
         </div>
     </div>
+    <!-- パスワード変更モーダルをインクルード -->
+    @include('modals.modal_password_change')
 @endsection
