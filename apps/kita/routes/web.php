@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Member\ArticleController;
 use App\Http\Controllers\Member\Auth\LoginController;
 use App\Http\Controllers\Member\Auth\RegisterController;
@@ -49,3 +50,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('login', [AdminLoginController::class, 'login']);
     Route::get('logout', [AdminLoginController::class, 'logout'])->name('logout');
 });
+
+Route::middleware('auth')->group(function () {
+
+    Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
+        Route::get('admin_users', [UserController::class, 'index'])->name('admin_users.index');
+    });
+
+});
+//テスト用　新規追加実装後消去
+Route::get('/test-hashing', [AdminLoginController::class, 'testHashing']);

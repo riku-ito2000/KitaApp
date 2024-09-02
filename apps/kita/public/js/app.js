@@ -3020,6 +3020,8 @@ function withinMaxClamp(min, value, max) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/* harmony import */ var typeface_montserrat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! typeface-montserrat */ "./node_modules/typeface-montserrat/index.css");
+
 
 
 /***/ }),
@@ -9505,6 +9507,801 @@ function isnan (val) {
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/typeface-montserrat/index.css":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/typeface-montserrat/index.css ***!
+  \**************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _files_montserrat_latin_100_woff2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./files/montserrat-latin-100.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-100.woff2");
+/* harmony import */ var _files_montserrat_latin_100_woff__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./files/montserrat-latin-100.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-100.woff");
+/* harmony import */ var _files_montserrat_latin_100italic_woff2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./files/montserrat-latin-100italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-100italic.woff2");
+/* harmony import */ var _files_montserrat_latin_100italic_woff__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./files/montserrat-latin-100italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-100italic.woff");
+/* harmony import */ var _files_montserrat_latin_200_woff2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./files/montserrat-latin-200.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-200.woff2");
+/* harmony import */ var _files_montserrat_latin_200_woff__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./files/montserrat-latin-200.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-200.woff");
+/* harmony import */ var _files_montserrat_latin_200italic_woff2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./files/montserrat-latin-200italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-200italic.woff2");
+/* harmony import */ var _files_montserrat_latin_200italic_woff__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./files/montserrat-latin-200italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-200italic.woff");
+/* harmony import */ var _files_montserrat_latin_300_woff2__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./files/montserrat-latin-300.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-300.woff2");
+/* harmony import */ var _files_montserrat_latin_300_woff__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./files/montserrat-latin-300.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-300.woff");
+/* harmony import */ var _files_montserrat_latin_300italic_woff2__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./files/montserrat-latin-300italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-300italic.woff2");
+/* harmony import */ var _files_montserrat_latin_300italic_woff__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./files/montserrat-latin-300italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-300italic.woff");
+/* harmony import */ var _files_montserrat_latin_400_woff2__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./files/montserrat-latin-400.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-400.woff2");
+/* harmony import */ var _files_montserrat_latin_400_woff__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./files/montserrat-latin-400.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-400.woff");
+/* harmony import */ var _files_montserrat_latin_400italic_woff2__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./files/montserrat-latin-400italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-400italic.woff2");
+/* harmony import */ var _files_montserrat_latin_400italic_woff__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./files/montserrat-latin-400italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-400italic.woff");
+/* harmony import */ var _files_montserrat_latin_500_woff2__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./files/montserrat-latin-500.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-500.woff2");
+/* harmony import */ var _files_montserrat_latin_500_woff__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./files/montserrat-latin-500.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-500.woff");
+/* harmony import */ var _files_montserrat_latin_500italic_woff2__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./files/montserrat-latin-500italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-500italic.woff2");
+/* harmony import */ var _files_montserrat_latin_500italic_woff__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./files/montserrat-latin-500italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-500italic.woff");
+/* harmony import */ var _files_montserrat_latin_600_woff2__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./files/montserrat-latin-600.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-600.woff2");
+/* harmony import */ var _files_montserrat_latin_600_woff__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./files/montserrat-latin-600.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-600.woff");
+/* harmony import */ var _files_montserrat_latin_600italic_woff2__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./files/montserrat-latin-600italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-600italic.woff2");
+/* harmony import */ var _files_montserrat_latin_600italic_woff__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./files/montserrat-latin-600italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-600italic.woff");
+/* harmony import */ var _files_montserrat_latin_700_woff2__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./files/montserrat-latin-700.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-700.woff2");
+/* harmony import */ var _files_montserrat_latin_700_woff__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./files/montserrat-latin-700.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-700.woff");
+/* harmony import */ var _files_montserrat_latin_700italic_woff2__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./files/montserrat-latin-700italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-700italic.woff2");
+/* harmony import */ var _files_montserrat_latin_700italic_woff__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./files/montserrat-latin-700italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-700italic.woff");
+/* harmony import */ var _files_montserrat_latin_800_woff2__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./files/montserrat-latin-800.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-800.woff2");
+/* harmony import */ var _files_montserrat_latin_800_woff__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./files/montserrat-latin-800.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-800.woff");
+/* harmony import */ var _files_montserrat_latin_800italic_woff2__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./files/montserrat-latin-800italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-800italic.woff2");
+/* harmony import */ var _files_montserrat_latin_800italic_woff__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./files/montserrat-latin-800italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-800italic.woff");
+/* harmony import */ var _files_montserrat_latin_900_woff2__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./files/montserrat-latin-900.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-900.woff2");
+/* harmony import */ var _files_montserrat_latin_900_woff__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./files/montserrat-latin-900.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-900.woff");
+/* harmony import */ var _files_montserrat_latin_900italic_woff2__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./files/montserrat-latin-900italic.woff2 */ "./node_modules/typeface-montserrat/files/montserrat-latin-900italic.woff2");
+/* harmony import */ var _files_montserrat_latin_900italic_woff__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./files/montserrat-latin-900italic.woff */ "./node_modules/typeface-montserrat/files/montserrat-latin-900italic.woff");
+// Imports
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_100_woff2__WEBPACK_IMPORTED_MODULE_2__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_1___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_100_woff__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_2___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_100italic_woff2__WEBPACK_IMPORTED_MODULE_4__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_3___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_100italic_woff__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_4___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_200_woff2__WEBPACK_IMPORTED_MODULE_6__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_5___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_200_woff__WEBPACK_IMPORTED_MODULE_7__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_6___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_200italic_woff2__WEBPACK_IMPORTED_MODULE_8__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_7___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_200italic_woff__WEBPACK_IMPORTED_MODULE_9__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_8___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_300_woff2__WEBPACK_IMPORTED_MODULE_10__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_9___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_300_woff__WEBPACK_IMPORTED_MODULE_11__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_10___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_300italic_woff2__WEBPACK_IMPORTED_MODULE_12__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_11___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_300italic_woff__WEBPACK_IMPORTED_MODULE_13__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_12___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_400_woff2__WEBPACK_IMPORTED_MODULE_14__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_13___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_400_woff__WEBPACK_IMPORTED_MODULE_15__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_14___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_400italic_woff2__WEBPACK_IMPORTED_MODULE_16__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_15___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_400italic_woff__WEBPACK_IMPORTED_MODULE_17__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_16___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_500_woff2__WEBPACK_IMPORTED_MODULE_18__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_17___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_500_woff__WEBPACK_IMPORTED_MODULE_19__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_18___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_500italic_woff2__WEBPACK_IMPORTED_MODULE_20__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_19___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_500italic_woff__WEBPACK_IMPORTED_MODULE_21__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_20___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_600_woff2__WEBPACK_IMPORTED_MODULE_22__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_21___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_600_woff__WEBPACK_IMPORTED_MODULE_23__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_22___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_600italic_woff2__WEBPACK_IMPORTED_MODULE_24__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_23___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_600italic_woff__WEBPACK_IMPORTED_MODULE_25__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_24___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_700_woff2__WEBPACK_IMPORTED_MODULE_26__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_25___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_700_woff__WEBPACK_IMPORTED_MODULE_27__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_26___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_700italic_woff2__WEBPACK_IMPORTED_MODULE_28__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_27___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_700italic_woff__WEBPACK_IMPORTED_MODULE_29__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_28___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_800_woff2__WEBPACK_IMPORTED_MODULE_30__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_29___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_800_woff__WEBPACK_IMPORTED_MODULE_31__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_30___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_800italic_woff2__WEBPACK_IMPORTED_MODULE_32__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_31___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_800italic_woff__WEBPACK_IMPORTED_MODULE_33__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_32___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_900_woff2__WEBPACK_IMPORTED_MODULE_34__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_33___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_900_woff__WEBPACK_IMPORTED_MODULE_35__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_34___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_900italic_woff2__WEBPACK_IMPORTED_MODULE_36__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_35___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_files_montserrat_latin_900italic_woff__WEBPACK_IMPORTED_MODULE_37__["default"]);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "/* montserrat-100normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 100;\n  src:\n    local('Montserrat Thin '),\n    local('Montserrat-Thin'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-100italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 100;\n  src:\n    local('Montserrat Thin italic'),\n    local('Montserrat-Thinitalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-200normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 200;\n  src:\n    local('Montserrat Extra Light '),\n    local('Montserrat-Extra Light'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_5___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-200italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 200;\n  src:\n    local('Montserrat Extra Light italic'),\n    local('Montserrat-Extra Lightitalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_6___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_7___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-300normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 300;\n  src:\n    local('Montserrat Light '),\n    local('Montserrat-Light'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_8___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_9___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-300italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 300;\n  src:\n    local('Montserrat Light italic'),\n    local('Montserrat-Lightitalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_10___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_11___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-400normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 400;\n  src:\n    local('Montserrat Regular '),\n    local('Montserrat-Regular'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_12___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_13___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-400italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 400;\n  src:\n    local('Montserrat Regular italic'),\n    local('Montserrat-Regularitalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_14___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_15___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-500normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 500;\n  src:\n    local('Montserrat Medium '),\n    local('Montserrat-Medium'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_16___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_17___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-500italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 500;\n  src:\n    local('Montserrat Medium italic'),\n    local('Montserrat-Mediumitalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_18___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_19___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-600normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 600;\n  src:\n    local('Montserrat SemiBold '),\n    local('Montserrat-SemiBold'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_20___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_21___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-600italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 600;\n  src:\n    local('Montserrat SemiBold italic'),\n    local('Montserrat-SemiBolditalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_22___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_23___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-700normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 700;\n  src:\n    local('Montserrat Bold '),\n    local('Montserrat-Bold'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_24___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_25___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-700italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 700;\n  src:\n    local('Montserrat Bold italic'),\n    local('Montserrat-Bolditalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_26___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_27___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-800normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 800;\n  src:\n    local('Montserrat ExtraBold '),\n    local('Montserrat-ExtraBold'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_28___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_29___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-800italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 800;\n  src:\n    local('Montserrat ExtraBold italic'),\n    local('Montserrat-ExtraBolditalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_30___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_31___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-900normal - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 900;\n  src:\n    local('Montserrat Black '),\n    local('Montserrat-Black'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_32___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_33___ + ") format('woff'); /* Modern Browsers */\n}\n\n/* montserrat-900italic - latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-display: swap;\n  font-weight: 900;\n  src:\n    local('Montserrat Black italic'),\n    local('Montserrat-Blackitalic'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_34___ + ") format('woff2'), /* Super Modern Browsers */\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_35___ + ") format('woff'); /* Modern Browsers */\n}\n\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (cssWithMappingToString) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], " {").concat(content, "}");
+      }
+
+      return content;
+    }).join("");
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery, dedupe) {
+    if (typeof modules === "string") {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, ""]];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var i = 0; i < this.length; i++) {
+        // eslint-disable-next-line prefer-destructuring
+        var id = this[i][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = [].concat(modules[_i]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    // eslint-disable-next-line no-param-reassign
+    options = {};
+  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+
+
+  url = url && url.__esModule ? url.default : url;
+
+  if (typeof url !== "string") {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    // eslint-disable-next-line no-param-reassign
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+
+  return url;
+};
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-100.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-100.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-100.woff?ec38980a9e0119a379e2a9b3dbb1901a");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-100.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-100.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-100.woff2?8d7d79679b70dbe27172b6460e7a7910");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-100italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-100italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-100italic.woff?3b325a3173c8207435cd1b76e19bf501");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-100italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-100italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-100italic.woff2?e279051046ba1286706adc886cf1c96b");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-200.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-200.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-200.woff?2d8ba08717110d27122e54c34b8a5798");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-200.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-200.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-200.woff2?9d266fbbfa6cab7009bd56003b1eeb67");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-200italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-200italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-200italic.woff?a0d6f343e4b536c582926255367a57da");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-200italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-200italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-200italic.woff2?6e5b3756583bb2263eb062eae992735e");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-300.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-300.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-300.woff?ea303695ceab35f17e7d062f30e0173b");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-300.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-300.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-300.woff2?00b3e893aab5a8fd632d6342eb72551a");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-300italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-300italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-300italic.woff?54b0bf2c8c4c12ffafd803be2466a790");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-300italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-300italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-300italic.woff2?56f34ea368f6aedf89583d444bbcb227");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-400.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-400.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-400.woff?0659a9f4e90db5cf51b50d005bff1e41");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-400.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-400.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-400.woff2?b71748ae4f80ec8c014def4c5fa8688b");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-400italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-400italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-400italic.woff?7583622cfde30ae49086d18447ab28e7");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-400italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-400italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-400italic.woff2?6eed6b4cbb809c6efc7aa7ddad6dbe3e");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-500.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-500.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-500.woff?edd311588712a96bbf435fad264fff62");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-500.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-500.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-500.woff2?091b209546e16313fd4f4fc36090c757");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-500italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-500italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-500italic.woff?5146cbfe02b1deea5dffea27a5f2f998");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-500italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-500italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-500italic.woff2?c90ced68b46050061d1a41842d6dfb43");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-600.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-600.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-600.woff?b77863a375260a05dd13f86a1cee598f");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-600.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-600.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-600.woff2?0480d2f8a71f38db8633b84d8722e0c2");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-600italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-600italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-600italic.woff?c4fcfeeb057724724097167e57bd7801");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-600italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-600italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-600italic.woff2?cf46ffb11f3a60d7df0567f8851a1d00");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-700.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-700.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-700.woff?99271a835e1cae8c76ef8bba99a8cc4e");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-700.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-700.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-700.woff2?7dbcc8a5ea2289d83f657c25b4be6193");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-700italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-700italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-700italic.woff?6779372f04095051c62ed36bc1dcc142");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-700italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-700italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-700italic.woff2?c41ad6bdb4bd504a843d546d0a47958d");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-800.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-800.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-800.woff?4e3c615967a2360f5db87d2f0fd2456f");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-800.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-800.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-800.woff2?db9a3e0ba7eaea32e5f55328ace6cf23");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-800italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-800italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-800italic.woff?fe82abb0bcede51bf724254878e0c374");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-800italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-800italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-800italic.woff2?bf45bfa14805969eda318973947bc42b");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-900.woff":
+/*!**************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-900.woff ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-900.woff?8211f418baeb8ec880b80ba3c682f957");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-900.woff2":
+/*!***************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-900.woff2 ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-900.woff2?e66c7edc609e24bacbb705175669d814");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-900italic.woff":
+/*!********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-900italic.woff ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-900italic.woff?efcaa0f6a82ee0640b83a0916e6e8d68");
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/files/montserrat-latin-900italic.woff2":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/typeface-montserrat/files/montserrat-latin-900italic.woff2 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/typeface-montserrat/files/montserrat-latin-900italic.woff2?4454c775e48152c1a72510ceed3603e2");
+
+/***/ }),
+
 /***/ "./node_modules/ieee754/index.js":
 /*!***************************************!*\
   !*** ./node_modules/ieee754/index.js ***!
@@ -9625,6 +10422,315 @@ module.exports = Array.isArray || function (arr) {
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "./node_modules/typeface-montserrat/index.css":
+/*!****************************************************!*\
+  !*** ./node_modules/typeface-montserrat/index.css ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./index.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/typeface-montserrat/index.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_index_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var isOldIE = function isOldIE() {
+  var memo;
+  return function memorize() {
+    if (typeof memo === 'undefined') {
+      // Test for IE <= 9 as proposed by Browserhacks
+      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+      // Tests for existence of standard globals is to allow style-loader
+      // to operate correctly into non-standard environments
+      // @see https://github.com/webpack-contrib/style-loader/issues/177
+      memo = Boolean(window && document && document.all && !window.atob);
+    }
+
+    return memo;
+  };
+}();
+
+var getTarget = function getTarget() {
+  var memo = {};
+  return function memorize(target) {
+    if (typeof memo[target] === 'undefined') {
+      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+        try {
+          // This will throw an exception if access to iframe is blocked
+          // due to cross-origin restrictions
+          styleTarget = styleTarget.contentDocument.head;
+        } catch (e) {
+          // istanbul ignore next
+          styleTarget = null;
+        }
+      }
+
+      memo[target] = styleTarget;
+    }
+
+    return memo[target];
+  };
+}();
+
+var stylesInDom = [];
+
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDom.length; i++) {
+    if (stylesInDom[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var index = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3]
+    };
+
+    if (index !== -1) {
+      stylesInDom[index].references++;
+      stylesInDom[index].updater(obj);
+    } else {
+      stylesInDom.push({
+        identifier: identifier,
+        updater: addStyle(obj, options),
+        references: 1
+      });
+    }
+
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function insertStyleElement(options) {
+  var style = document.createElement('style');
+  var attributes = options.attributes || {};
+
+  if (typeof attributes.nonce === 'undefined') {
+    var nonce =  true ? __webpack_require__.nc : 0;
+
+    if (nonce) {
+      attributes.nonce = nonce;
+    }
+  }
+
+  Object.keys(attributes).forEach(function (key) {
+    style.setAttribute(key, attributes[key]);
+  });
+
+  if (typeof options.insert === 'function') {
+    options.insert(style);
+  } else {
+    var target = getTarget(options.insert || 'head');
+
+    if (!target) {
+      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+    }
+
+    target.appendChild(style);
+  }
+
+  return style;
+}
+
+function removeStyleElement(style) {
+  // istanbul ignore if
+  if (style.parentNode === null) {
+    return false;
+  }
+
+  style.parentNode.removeChild(style);
+}
+/* istanbul ignore next  */
+
+
+var replaceText = function replaceText() {
+  var textStore = [];
+  return function replace(index, replacement) {
+    textStore[index] = replacement;
+    return textStore.filter(Boolean).join('\n');
+  };
+}();
+
+function applyToSingletonTag(style, index, remove, obj) {
+  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
+
+  /* istanbul ignore if  */
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = replaceText(index, css);
+  } else {
+    var cssNode = document.createTextNode(css);
+    var childNodes = style.childNodes;
+
+    if (childNodes[index]) {
+      style.removeChild(childNodes[index]);
+    }
+
+    if (childNodes.length) {
+      style.insertBefore(cssNode, childNodes[index]);
+    } else {
+      style.appendChild(cssNode);
+    }
+  }
+}
+
+function applyToTag(style, options, obj) {
+  var css = obj.css;
+  var media = obj.media;
+  var sourceMap = obj.sourceMap;
+
+  if (media) {
+    style.setAttribute('media', media);
+  } else {
+    style.removeAttribute('media');
+  }
+
+  if (sourceMap && typeof btoa !== 'undefined') {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    while (style.firstChild) {
+      style.removeChild(style.firstChild);
+    }
+
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var singleton = null;
+var singletonCounter = 0;
+
+function addStyle(obj, options) {
+  var style;
+  var update;
+  var remove;
+
+  if (options.singleton) {
+    var styleIndex = singletonCounter++;
+    style = singleton || (singleton = insertStyleElement(options));
+    update = applyToSingletonTag.bind(null, style, styleIndex, false);
+    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+  } else {
+    style = insertStyleElement(options);
+    update = applyToTag.bind(null, style, options);
+
+    remove = function remove() {
+      removeStyleElement(style);
+    };
+  }
+
+  update(obj);
+  return function updateStyle(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
+        return;
+      }
+
+      update(obj = newObj);
+    } else {
+      remove();
+    }
+  };
+}
+
+module.exports = function (list, options) {
+  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+  // tags it will allow on a page
+
+  if (!options.singleton && typeof options.singleton !== 'boolean') {
+    options.singleton = isOldIE();
+  }
+
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+
+    if (Object.prototype.toString.call(newList) !== '[object Array]') {
+      return;
+    }
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDom[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDom[_index].references === 0) {
+        stylesInDom[_index].updater();
+
+        stylesInDom.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
 
 /***/ }),
 
@@ -14314,7 +15420,7 @@ const isThenable = (thing) =>
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
+/******/ 			id: moduleId,
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
@@ -14359,6 +15465,18 @@ const isThenable = (thing) =>
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -14454,6 +15572,11 @@ const isThenable = (thing) =>
 /******/ 		var chunkLoadingGlobal = self["webpackChunktraning_kita_app"] = self["webpackChunktraning_kita_app"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
 /******/ 	})();
 /******/ 	
 /************************************************************************/

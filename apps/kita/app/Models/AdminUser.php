@@ -3,22 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUser extends Authenticatable
 {
-    protected $guard = 'admin';
+    use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     protected $hidden = [
-        'password',
+        'password', 'remember_token',
     ];
 
     // パスワードの自動ハッシュ化
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value);
+        $this->attributes['password'] = Hash::make($value);
+    }
+
+    // フルネームを取得するアクセサ
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
     }
 }
