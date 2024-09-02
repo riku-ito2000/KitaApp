@@ -39,10 +39,13 @@ class ArticleController extends Controller
             $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
                 ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
                 ->with(['member', 'tags'])
+                ->orderBy('created_at', 'desc') // 新しい順に並べ替え
                 ->paginate($paginationLimit)
                 ->appends(['search' => $query]);
         } else {
-            $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
+            $articles = Article::with(['member', 'tags'])
+                ->orderBy('created_at', 'desc') // 新しい順に並べ替え
+                ->paginate($paginationLimit);
         }
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
@@ -85,7 +88,7 @@ class ArticleController extends Controller
         $article->tags()->sync($request->input('tags', []));
 
         // 新しく作成した記事の編集ページにリダイレクト
-        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事投稿が完了しました');
+        return redirect()->route('articles.edit', $article->id)->with('success', '記事投稿が完了しました');
     }
 
     /**
@@ -105,6 +108,15 @@ class ArticleController extends Controller
 
         // ビューに記事とタグを渡す
         return view('member.articles.edit', compact('article', 'tags'));
+    }
+
+    public function show(Article $article)
+    {
+        // 'member' と 'tags' のリレーションシップをロード
+        $article->load(['member', 'tags']);
+
+        // 記事詳細ページのビューを返す
+        return view('member.articles.show', compact('article'));
     }
 
     /**
@@ -130,7 +142,7 @@ class ArticleController extends Controller
 
         $article->tags()->sync($request->input('tags', []));
 
-        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事が更新されました');
+        return redirect()->route('articles.edit', $article->id)->with('success', '記事が更新されました');
     }
 
     /**

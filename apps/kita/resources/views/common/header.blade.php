@@ -4,7 +4,7 @@
             <div class="row w-100 align-items-center">
                 <!-- Kitaボタン -->
                 <div class="col-auto">
-                    <a class="navbar-brand kita-brand" href="{{ url('/') }}" style="background-color: #5a5; color: white; border-radius: 50px; padding: 10px 30px; font-size: 1.5rem;">
+                    <a class="navbar-brand kita-brand btn rounded-pill px-4 py-2 fs-3 text-white" href="{{ url('/') }}" style="background-color: #8BC34A;">
                         {{ config('app.name', 'Kita') }}
                     </a>
                 </div>
@@ -26,7 +26,7 @@
                 @auth
                     <!-- 記事作成ボタン -->
                     <div class="col-auto">
-                        <a class="btn btn-sm btn-success create-article-btn" href="{{ route('member.articles.create') }}" style="background-color: white; border: 2px solid #5a5; color: black; padding: 8px 20px;">
+                        <a class="btn btn-sm btn-success create-article-btn" href="{{ route('articles.create') }}" style="background-color: white; border: 2px solid #5a5; color: black; padding: 8px 20px;">
                             <span class="d-none d-md-inline">記事を作成する</span> <!-- 大きな画面で表示 -->
                             <i class="fas fa-edit d-md-none"></i> <!-- 小さな画面でアイコン表示 -->
                         </a>
@@ -39,32 +39,29 @@
                         @guest
                             <!-- ログインしていない場合に表示されるアイコン -->
                             <li class="nav-item dropdown">
-                                <a class="btn btn-sm btn-success" href="#" id="guestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8BC34A; border: 2px solid #8BC34A; border-radius: 10px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                                <a class="btn btn-sm btn-success p-0 d-flex justify-content-center align-items-center" href="#" id="guestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8BC34A; border: 2px solid #8BC34A; border-radius: 10px; width: 40px; height: 40px;">
                                     <i class="fas fa-sign-in-alt" style="font-size: 25px;"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="guestDropdown">
-                                    <a class="dropdown-item" href="{{ route('register') }}">{{ __('新規会員登録') }}</a>
-                                    <a class="dropdown-item" href="{{ route('login') }}">{{ __('ログイン') }}</a>
-                                </div>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="guestDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('register') }}">{{ __('新規会員登録') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('login') }}">{{ __('ログイン') }}</a></li>
+                                </ul>
                             </li>
                         @else
                             <!-- ログインしている場合、クリックでドロップダウンメニューを表示 -->
                             <li class="nav-item dropdown">
-                                <a class="btn btn-sm btn-success" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8BC34A; border: 2px solid #8BC34A; border-radius: 10px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                                <a class="btn btn-sm btn-success p-0 d-flex justify-content-center align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8BC34A; border: 2px solid #8BC34A; border-radius: 10px; width: 40px; height: 40px;">
                                     <i class="far fa-user-circle" style="font-size: 25px;"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                                        プロフィール編集
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
-                                        {{ __('ログアウト') }}
-                                    </a>
-                                </div>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">プロフィール編集</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}">{{ __('ログアウト') }}</a></li>
+                                </ul>
                             </li>
                         @endguest
                     </ul>
                 </div>
+
             </div>
         </div>
     </nav>
