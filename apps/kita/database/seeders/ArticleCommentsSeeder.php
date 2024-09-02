@@ -22,7 +22,7 @@ class ArticleCommentsSeeder extends Seeder
             // 各記事に対して10個のダミーコメントを作成
             for ($i = 1; $i <= 10; $i++) {
                 ArticleComment::create([
-                    'contents' => 'これはダミーコメント '.$i,
+                    'contents' => "これはダミーコメント $i です。\nこのコメントは複数行にわたります。\n改行が正しく反映されるか確認してください。",
                     'member_id' => Member::inRandomOrder()->first()->id,
                     'article_id' => $article->id,
                 ]);

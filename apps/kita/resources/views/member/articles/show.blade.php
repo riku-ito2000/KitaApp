@@ -4,10 +4,21 @@
 
 @section('container')
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
-        <!-- 記事セクション -->
+        <!-- フラッシュメッセージ -->
+        @include('common.messages')
+        @if (auth()->check() && auth()->id() === $article->member_id)
+            <!-- 編集ボタン -->
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{{ route('articles.edit', $article->id) }}"
+                   class="btn btn-success rounded-pill py-2 px-4"
+                   style="background-color: #8BC34A; border-color: #8BC34A;">
+                    編集する
+                </a>
+            </div>
+        @endif
         <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- 記事タイトル -->
-            <h1 class="mb-3" style="font-weight: 700; font-size: 2rem;">{{ $article->title }}</h1>
+            <h1 class="mb-3 fw-bold fs-2">{{ $article->title }}</h1>
         </div>
 
         <!-- 投稿者情報 -->
@@ -18,36 +29,36 @@
         <!-- 記事のタグ -->
         <div class="mb-3 mt-2">
             @foreach($article->tags as $tag)
-                <span class="badge bg-primary me-1" style="background-color: #007bff;">{{ $tag->name }}</span>
+                <span class="badge bg-primary me-1">{{ $tag->name }}</span>
             @endforeach
         </div>
 
         <!-- 記事の内容 -->
-        <p style="white-space: pre-line;">{{ $article->contents }}</p>
+        <p class="whitespace-pre-line">{!! nl2br(e($article->contents)) !!}</p>
     </div>
 
     <!-- コメントセクション -->
-    <div class="container mt-5 py-4" style="background-color: #ffffff; max-width: 800px; border: 1px solid #ddd; border-radius: 5px;">
+    <div class="container mt-5 py-4 border rounded" style="background-color: #ffffff; max-width: 800px;">
         <!-- アンダーラインを引く部分 -->
-        <div style="margin-left: -13px; margin-right: -13px;">
-            <h3 class="mb-4" style="font-weight: 700; padding-left: 16px; padding-right: 16px;">コメント</h3>
+        <div class="mx-n3">
+            <h3 class="mb-4 fw-bold px-3">コメント</h3>
             <!-- アンダーライン -->
-            <hr style="border-top: 2px solid #666; margin: 0;">
+            <hr class="border-top border-2 border-dark m-0">
         </div>
 
         <!-- コメントのリストコンテナ -->
-        <div class="container mb-4" style="padding-left: 5px; padding-right: 5px;">
+        <div class="container mb-4 px-1">
             @if($comments->isEmpty())
-                <p class="text-center text-muted" style="font-size: 1.0rem; font-weight: 700;">コメントがありません。</p>
+                <p class="text-center text-muted fw-bold" style="font-size: 1.0rem;">コメントがありません。</p>
             @else
                 @foreach($comments as $comment)
-                    <div class="mb-4 p-3" style="background-color: #ffffff;">
+                    <div class="mb-4 p-3 bg-white">
                         <small class="text-muted">{{ $comment->member->name }}が{{ $comment->created_at->format('Y年m月d日') }}に投稿</small>
-                        <p class="mt-2">{{ $comment->contents }}</p>
+                        <p class="mt-2">{!! nl2br(e($comment->contents)) !!}</p>
                     </div>
                     @if (!$loop->last)
                         <!-- 区切り線 -->
-                        <hr style="border-top: 2px solid #666; width: 100%; margin-left: 0;">
+                        <hr class="border-top border-2 border-dark w-100 m-0">
                     @endif
                 @endforeach
             @endif

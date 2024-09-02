@@ -28,10 +28,7 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('member.artic
 
 Route::middleware('auth')->group(function () {
 
-    // 記事作成、編集、更新、削除ルート（member prefixを使用）
-    Route::prefix('member')->name('member.')->group(function () {
-        Route::resource('articles', ArticleController::class)->except(['index', 'show']);
-    });
+    Route::resource('articles', ArticleController::class)->except(['index']);
 
     // プロフィール編集ルート
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,6 +41,3 @@ Route::middleware('auth')->group(function () {
     // コメント投稿
     Route::post('/comments', [App\Http\Controllers\Comment\CommentController::class, 'store'])->name('comments.store');
 });
-
-//記事詳細ページルート
-Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
