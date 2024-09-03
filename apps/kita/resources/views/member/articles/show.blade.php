@@ -7,19 +7,20 @@
         <!-- フラッシュメッセージ -->
         @include('common.messages')
         @if (auth()->check() && auth()->id() === $article->member_id)
-            <!-- 編集ボタン -->
             <div class="d-flex justify-content-end mb-3">
-                <a href="{{ route('articles.edit', $article->id) }}"
-                   class="btn btn-success rounded-pill py-2 px-4"
-                   style="background-color: #8BC34A; border-color: #8BC34A;">
-                    編集する
-                </a>
                 <!-- 削除ボタン -->
                 <a href="{{ route('articles.destroy', $article->id) }}"
-                   class="btn btn-success rounded-pill py-2 px-4 ms-2"
+                   class="btn btn-success rounded-pill py-2 px-4"
                    style="background-color: #dc3545; border-color: #dc3545;" data-bs-toggle="modal" data-bs-target="#deleteModal">
                     削除する
                 </a>
+                <!-- 編集ボタン -->
+                <a href="{{ route('articles.edit', $article->id) }}"
+                   class="btn btn-success rounded-pill py-2 px-4 ms-2"
+                   style="background-color: #8BC34A; border-color: #8BC34A;">
+                    編集する
+                </a>
+
             </div>
         @endif
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -92,7 +93,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        本当にこの記事を削除しますか？この操作は元に戻せません。
+                        一度削除すると元に戻せません。<br>よろしいですか？
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
