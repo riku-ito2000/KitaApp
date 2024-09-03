@@ -24,10 +24,6 @@ Route::middleware('guest')->group(function () {
 // ログアウトルート
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-// 認証が不要なルート
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
-Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
-
 Route::middleware('auth')->group(function () {
 
     Route::resource('articles', ArticleController::class)->except(['index', 'show']);
@@ -43,3 +39,7 @@ Route::middleware('auth')->group(function () {
     // コメント投稿
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 });
+
+// 認証が不要なルート
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
