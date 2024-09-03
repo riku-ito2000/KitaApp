@@ -25,7 +25,6 @@
         <small class="text-muted">
             {{ $article->member ? $article->member->name : 'Unknown' }}が{{ $article->created_at->format('Y年m月d日') }}に投稿
         </small>
-
         <!-- 記事のタグ -->
         <div class="mb-3 mt-2">
             @foreach($article->tags as $tag)
