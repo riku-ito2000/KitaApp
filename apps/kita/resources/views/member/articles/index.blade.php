@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="d-flex mt-2">
                                     @foreach ($article->tags as $tag)
-                                        <span class="badge bg-primary me-1" style="border-radius: 3px;">{{ $tag->name }}</span>
+                                        <span class="badge rounded-1 bg-primary me-1">{{ $tag->name }}</span>
 
                                     @endforeach
                                 </div>

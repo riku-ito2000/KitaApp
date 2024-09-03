@@ -3,25 +3,28 @@
 @section('title', $article->title . ' - Kita')
 
 @section('container')
-    <div class="container py-4 position-relative" style="background-color: #ffffff; max-width: 800px;">
+    <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
         <!-- フラッシュメッセージ -->
         @include('common.messages')
         @if (auth()->check() && auth()->id() === $article->member_id)
-            <!-- 編集ボタンと削除ボタン -->
-            <div class="d-flex justify-content-end mb-3" style="position: relative; top: -5px;">
-                <a href="{{ route('member.articles.edit', $article->id) }}" class="btn btn-success me-2" style="background-color: #8BC34A; border: none; border-radius: 18px; padding: 8px 18px;">
+            <!-- 編集ボタン -->
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{{ route('articles.edit', $article->id) }}"
+                   class="btn btn-success rounded-pill py-2 px-4"
+                   style="background-color: #8BC34A; border-color: #8BC34A;">
                     編集する
                 </a>
                 <!-- 削除ボタン -->
-                <button type="button" class="btn btn-danger" style="background-color: #dc3545; border: none; border-radius: 18px; padding: 8px 18px;" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                <a href="{{ route('articles.destroy', $article->id) }}"
+                   class="btn btn-success rounded-pill py-2 px-4 ms-2"
+                   style="background-color: #dc3545; border-color: #dc3545;" data-bs-toggle="modal" data-bs-target="#deleteModal">
                     削除する
-                </button>
+                </a>
             </div>
         @endif
-
         <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- 記事タイトル -->
-            <h1 class="mb-3" style="font-weight: 700; font-size: 2rem;">{{ $article->title }}</h1>
+            <h1 class="mb-3 fw-bold fs-2">{{ $article->title }}</h1>
         </div>
 
         <!-- 投稿者情報 -->
@@ -32,12 +35,51 @@
         <!-- 記事のタグ -->
         <div class="mb-3 mt-2">
             @foreach($article->tags as $tag)
-                <span class="badge bg-primary me-1" style="background-color: #007bff;">{{ $tag->name }}</span>
+                <span class="badge bg-primary me-1">{{ $tag->name }}</span>
             @endforeach
         </div>
 
         <!-- 記事の内容 -->
-        <p style="white-space: pre-line;">{!! nl2br(e($article->contents)) !!}</p>
+        <p class="whitespace-pre-line">{!! nl2br(e($article->contents)) !!}</p>
+    </div>
+
+    <!-- コメントセクション -->
+    <div class="container mt-5 py-4 border rounded" style="background-color: #ffffff; max-width: 800px;">
+        <!-- アンダーラインを引く部分 -->
+        <div class="mx-n3">
+            <h3 class="mb-4 fw-bold px-3">コメント</h3>
+            <!-- アンダーライン -->
+            <hr class="border-top border-2 border-dark m-0">
+        </div>
+
+        <!-- コメントのリストコンテナ -->
+        <div class="container mb-4 px-1">
+            @if($comments->isEmpty())
+                <p class="text-center text-muted fw-bold" style="font-size: 1.0rem;">コメントがありません。</p>
+            @else
+                @foreach($comments as $comment)
+                    <div class="mb-4 p-3 bg-white">
+                        <small class="text-muted">{{ $comment->member->name }}が{{ $comment->created_at->format('Y年m月d日') }}に投稿</small>
+                        <p class="mt-2">{!! nl2br(e($comment->contents)) !!}</p>
+                    </div>
+                    @if (!$loop->last)
+                        <!-- 区切り線 -->
+                        <hr class="border-top border-2 border-dark w-100 m-0">
+                    @endif
+                @endforeach
+            @endif
+        </div>
+
+        <!-- 最後のアンダーライン用のコンテナ -->
+        <div style="margin-left: -13px; margin-right: -13px;">
+            <hr style="border-top: 2px solid #666; margin: 0;">
+        </div>
+
+        <!-- 別のコンテナ（例: コメントフォームや他の情報用） -->
+        <div class="container">
+            <!-- 他のコンテンツやフォームをここに追加できます -->
+            {{-- コメント投稿フォーム追加予定 --}}
+        </div>
     </div>
 
     @if (auth()->check() && auth()->id() === $article->member_id)
@@ -61,7 +103,7 @@
         </div>
 
         <!-- 削除フォーム -->
-        <form id="deleteForm" action="{{ route('member.articles.destroy', $article->id) }}" method="POST" style="display: none;">
+        <form id="deleteForm" action="{{ route('articles.destroy', $article->id) }}" method="POST" style="display: none;">
             @csrf
             @method('DELETE')
         </form>

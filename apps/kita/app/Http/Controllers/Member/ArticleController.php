@@ -39,10 +39,13 @@ class ArticleController extends Controller
             $articles = Article::where('title', 'LIKE', "%{$escapedQuery}%")
                 ->orWhere('contents', 'LIKE', "%{$escapedQuery}%")
                 ->with(['member', 'tags'])
+                ->orderBy('created_at', 'desc') // 新しい順に並べ替え
                 ->paginate($paginationLimit)
                 ->appends(['search' => $query]);
         } else {
-            $articles = Article::with(['member', 'tags'])->paginate($paginationLimit);
+            $articles = Article::with(['member', 'tags'])
+                ->orderBy('created_at', 'desc') // 新しい順に並べ替え
+                ->paginate($paginationLimit);
         }
 
         $message = $articles->isEmpty() ? '記事が見つかりませんでした' : null;
@@ -57,6 +60,7 @@ class ArticleController extends Controller
      */
     public function create(): View
     {
+        // タグを全て取得してビューに渡す
         $tags = ArticleTag::all();
 
         // ビューに $tags を渡す
@@ -85,7 +89,7 @@ class ArticleController extends Controller
         $article->tags()->sync($request->input('tags', []));
 
         // 新しく作成した記事の編集ページにリダイレクト
-        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事投稿が完了しました');
+        return redirect()->route('articles.edit', $article->id)->with('success', '記事投稿が完了しました');
     }
 
     /**
@@ -105,6 +109,23 @@ class ArticleController extends Controller
 
         // ビューに記事とタグを渡す
         return view('member.articles.edit', compact('article', 'tags'));
+    }
+
+    /**
+     * Display the articles with members and comments
+     *
+     * @param Article $article
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     */
+    public function show(Article $article)
+    {
+        // 'member' と 'tags' のリレーションシップをロード
+        $article->load(['member', 'tags', 'comments.member']);
+
+        // コメントを最新の順に並べ替える（必要であれば）
+        $comments = $article->comments->sortByDesc('created_at');
+
+        return view('member.articles.show', compact('article', 'comments'));
     }
 
     /**
@@ -130,7 +151,7 @@ class ArticleController extends Controller
 
         $article->tags()->sync($request->input('tags', []));
 
-        return redirect()->route('member.articles.edit', $article->id)->with('success', '記事が更新されました');
+        return redirect()->route('articles.edit', $article->id)->with('success', '記事が更新されました');
     }
 
     /**
@@ -160,15 +181,6 @@ class ArticleController extends Controller
         if ($article->member_id !== auth()->id()) {
             abort(403, 'この記事を編集する権限がありません。');
         }
-    }
-
-    public function show($id)
-    {
-        // 指定されたIDに基づいて記事を取得
-        $article = Article::with(['member', 'tags'])->findOrFail($id);
-
-        // 記事詳細ページのビューを返す
-        return view('member.articles.show', compact('article'));
     }
 
     /**
