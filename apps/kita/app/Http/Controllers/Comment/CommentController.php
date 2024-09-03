@@ -21,6 +21,6 @@ class CommentController extends Controller
             'article_id' => $validated['article_id'], // バリデーションされた article_id を使用
         ]);
 
-        return back()->with('success', 'コメントが投稿されました');
+        return back()->with('success', 'コメントを投稿しました');
     }
 }

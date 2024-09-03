@@ -71,13 +71,13 @@
 
         <!-- コメント投稿フォーム -->
         @auth
-            <div class="container mt-4" style="max-width: 800px; padding: 20px;">
+            <div class="container mt-4" style="max-width: 800px;">
                 <form action="{{ route('comments.store') }}" method="POST" class="d-flex align-items-end">
                     @csrf
                     <!-- 隠しフィールドで article_id を送信 -->
                     <input type="hidden" name="article_id" value="{{ $article->id }}">
                     <div class="flex-grow-1 me-3">
-                        <textarea class="form-control @error('comments') is-invalid @enderror" id="comments" name="comments" rows="3" placeholder="コメントを入力" style="border: 1px solid #28a745; border-radius: 5px; background-color: white;"></textarea>
+                        <textarea class="form-control @error('comments') is-invalid @enderror" id="comments" name="comments" rows="3" placeholder="コメントを入力"></textarea>
                         @error('comments')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -85,7 +85,7 @@
                         @enderror
                     </div>
                     <div>
-                        <button type="submit" class="btn" style="color: #28a745; border: 1px solid #28a745; background-color: transparent; border-radius: 25px; padding: 8px 20px;">
+                        <button type="submit" class="btn btn-outline-success rounded-pill px-4">
                             コメント
                         </button>
                     </div>
@@ -94,8 +94,9 @@
         @else
             <!-- ログインを促すメッセージ -->
             <div class="container mt-4" style="max-width: 800px;">
-                <p class="text-muted text-center">コメントを投稿するには、<a href="{{ route('login') }}" style="color: #28a745;">ログイン</a>してください。</p>
+                <p class="text-muted text-center">コメントを投稿するには、<a href="{{ route('login') }}" class="text-success">ログイン</a>してください。</p>
             </div>
         @endauth
+
     </div>
 @endsection
