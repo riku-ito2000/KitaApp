@@ -26,13 +26,17 @@
 <body style="background-color: {{ request()->is('admin/*') ? '#fafafa' : '#e0e0e0' }};">
 <!-- ログイン・会員登録ページでない場合のみnavbarを表示 -->
 @if (!request()->is('login') && !request()->is('member_registration') && !request()->is('/') && !request()->is('admin/login'))
-    @include('common.header')
+    @if (request()->is('admin/*'))
+        @include('common.adminHeader')
+    @else
+        @include('common.header')
+    @endif
 @endif
 
-<main style="background-color: {{ request()->is('admin/*') ? '#fafafa' : '#e0e0e0' }}; padding-top: 50px;">
+<main style="background-color: {{ request()->is('admin/*') ? '#fafafa' : '#e0e0e0' }};
+              padding-top: {{ request()->is('admin/*') ? '20px' : '50px' }};">
     <div class="py-3">
-        @yield('container')
-    </div>
+    @yield('container')
 </main>
 
 <!-- BootstrapのJavaScriptファイルの読み込み -->
