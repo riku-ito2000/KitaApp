@@ -22,17 +22,15 @@
                         </div>
                     </form>
                 </div>
-
+                <!-- 記事作成ボタン -->
                 @auth
-                    <!-- 記事作成ボタン -->
-                    <div class="col-auto">
+                <div class="col-auto">
                         <a class="btn btn-sm btn-success create-article-btn" href="{{ route('articles.create') }}" style="background-color: white; border: 2px solid #5a5; color: black; padding: 8px 20px;">
                             <span class="d-none d-md-inline">記事を作成する</span> <!-- 大きな画面で表示 -->
                             <i class="fas fa-edit d-md-none"></i> <!-- 小さな画面でアイコン表示 -->
                         </a>
-                    </div>
+                </div>
                 @endauth
-
                 <!-- プロフィールアイコンまたはログインアイコン -->
                 <div class="col-auto">
                     <ul class="navbar-nav ms-auto">
@@ -61,7 +59,6 @@
                         @endguest
                     </ul>
                 </div>
-
             </div>
         </div>
     </nav>
