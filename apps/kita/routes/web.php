@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\Member\ArticleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,11 +25,11 @@ Route::middleware('guest')->group(function () {
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // 認証が不要なルート
-Route::get('/articles', [ArticleController::class, 'index'])->name('member.articles.index');
+Route::resource('articles', ArticleController::class)->only(['index', 'show']);
 
 Route::middleware('auth')->group(function () {
 
-    Route::resource('articles', ArticleController::class)->except(['index']);
+    Route::resource('articles', ArticleController::class)->except(['index', 'show']);
 
     // プロフィール編集ルート
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,4 +38,7 @@ Route::middleware('auth')->group(function () {
     // パスワード変更ルート
     Route::get('/password_change', [ProfileController::class, 'showPasswordChangeForm'])->name('password.change.form');
     Route::put('/password_change', [ProfileController::class, 'passwordChange'])->name('password.change');
+
+    // コメント投稿
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 });
