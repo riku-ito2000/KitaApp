@@ -32,7 +32,6 @@
         <small class="text-muted">
             {{ $article->member ? $article->member->name : 'Unknown' }}が{{ $article->created_at->format('Y年m月d日') }}に投稿
         </small>
-
         <!-- 記事のタグ -->
         <div class="mb-3 mt-2">
             @foreach($article->tags as $tag)
@@ -76,11 +75,35 @@
             <hr style="border-top: 2px solid #666; margin: 0;">
         </div>
 
-        <!-- 別のコンテナ（例: コメントフォームや他の情報用） -->
-        <div class="container">
-            <!-- 他のコンテンツやフォームをここに追加できます -->
-            {{-- コメント投稿フォーム追加予定 --}}
-        </div>
+        <!-- コメント投稿フォーム -->
+        @auth
+            <div class="container mt-4" style="max-width: 800px;">
+                <form action="{{ route('comments.store') }}" method="POST" class="d-flex align-items-end">
+                    @csrf
+                    <!-- 隠しフィールドで article_id を送信 -->
+                    <input type="hidden" name="article_id" value="{{ $article->id }}">
+                    <div class="flex-grow-1 me-3">
+                        <textarea class="form-control @error('comments') is-invalid @enderror" id="comments" name="comments" rows="3" placeholder="コメントを入力"></textarea>
+                        @error('comments')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-outline-success rounded-pill px-4">
+                            コメント
+                        </button>
+                    </div>
+                </form>
+            </div>
+        @else
+            <!-- ログインを促すメッセージ -->
+            <div class="container mt-4" style="max-width: 800px;">
+                <p class="text-muted text-center">コメントを投稿するには、<a href="{{ route('login') }}" class="text-success">ログイン</a>してください。</p>
+            </div>
+        @endauth
+
     </div>
 
     @if (auth()->check() && auth()->id() === $article->member_id)
