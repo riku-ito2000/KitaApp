@@ -184,12 +184,11 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param Article $article
      * @return RedirectResponse
      * @throws AuthorizationException
      */
-    public function destroy(Request $request, Article $article): RedirectResponse
+    public function destroy(Article $article): RedirectResponse
     {
         $this->authorizeArticle($article);
         $article->delete();
