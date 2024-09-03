@@ -193,6 +193,6 @@ class ArticleController extends Controller
         $this->authorizeArticle($article);
         $article->delete();
 
-        return redirect()->route('member.articles.index')->with('success', '記事が削除されました。');
+        return redirect()->route('articles.index')->with('success', '記事が削除されました。');
     }
 }

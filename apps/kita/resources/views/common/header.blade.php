@@ -11,7 +11,7 @@
 
                 <!-- 検索フォーム -->
                 <div class="col">
-                    <form class="d-flex search-form" action="{{ route('member.articles.index') }}" method="GET">
+                    <form class="d-flex search-form" action="{{ route('articles.index') }}" method="GET">
                         <div class="input-group">
                             <input class="form-control search-input" type="search" name="search" placeholder="Search for something" aria-label="Search" value="{{ request('search') }}" style="background-color: #ffffff;">
                             <!-- 検索ボタン -->
