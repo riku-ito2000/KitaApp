@@ -61,6 +61,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('admin_users', [UserController::class, 'index'])->name('admin_users.index');
     });
 });
-
-// テスト用　新規追加実装後消去
-Route::get('/test-hashing', [AdminLoginController::class, 'testHashing']);
