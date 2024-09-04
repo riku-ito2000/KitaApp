@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\Member\ArticleController;
 use App\Http\Controllers\Member\Auth\LoginController;
@@ -28,7 +26,6 @@ Route::middleware('guest:web')->group(function () {
 // 会員用ログアウトルート
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-
 // 会員用認証が必要なルート
 Route::middleware('auth:web')->group(function () {
 
@@ -45,7 +42,6 @@ Route::middleware('auth:web')->group(function () {
     // コメント投稿
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 });
-
 
 // 管理者用ルート
 Route::prefix('admin')->name('admin.')->group(function () {
