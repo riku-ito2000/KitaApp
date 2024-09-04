@@ -111,6 +111,12 @@ class ArticleController extends Controller
         return view('member.articles.edit', compact('article', 'tags'));
     }
 
+    /**
+     * Display the articles with members and comments
+     *
+     * @param Article $article
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     */
     public function show(Article $article)
     {
         // 'member' と 'tags' のリレーションシップをロード
@@ -175,5 +181,18 @@ class ArticleController extends Controller
         if ($article->member_id !== auth()->id()) {
             abort(403, 'この記事を編集する権限がありません。');
         }
+    }
+
+    /**
+     * @param Article $article
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function destroy(Article $article): RedirectResponse
+    {
+        $this->authorizeArticle($article);
+        $article->delete();
+
+        return redirect()->route('articles.index')->with('success', '記事が削除されました。');
     }
 }

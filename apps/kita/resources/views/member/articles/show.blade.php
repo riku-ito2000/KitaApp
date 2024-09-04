@@ -7,13 +7,20 @@
         <!-- フラッシュメッセージ -->
         @include('common.messages')
         @if (auth()->check() && auth()->id() === $article->member_id)
-            <!-- 編集ボタン -->
             <div class="d-flex justify-content-end mb-3">
-                <a href="{{ route('articles.edit', $article->id) }}"
+                <!-- 削除ボタン -->
+                <a href="{{ route('articles.destroy', $article->id) }}"
                    class="btn btn-success rounded-pill py-2 px-4"
+                   style="background-color: #dc3545; border-color: #dc3545;" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    削除する
+                </a>
+                <!-- 編集ボタン -->
+                <a href="{{ route('articles.edit', $article->id) }}"
+                   class="btn btn-success rounded-pill py-2 px-4 ms-2"
                    style="background-color: #8BC34A; border-color: #8BC34A;">
                     編集する
                 </a>
+
             </div>
         @endif
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -98,4 +105,37 @@
         @endauth
 
     </div>
+
+    @if (auth()->check() && auth()->id() === $article->member_id)
+        <!-- 削除確認モーダル -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">削除確認</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        一度削除すると元に戻せません。<br>よろしいですか？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteButton">削除する</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 削除フォーム -->
+        <form id="deleteForm" action="{{ route('articles.destroy', $article->id) }}" method="POST" style="display: none;">
+            @csrf
+            @method('DELETE')
+        </form>
+
+        <script>
+            document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+                document.getElementById('deleteForm').submit();
+            });
+        </script>
+    @endif
 @endsection

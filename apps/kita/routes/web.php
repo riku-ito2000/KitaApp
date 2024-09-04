@@ -8,7 +8,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // ホームページ（ログインフォーム）ルート
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('home');
 
 // 認証が不要なルート
 Route::middleware('guest')->group(function () {
@@ -23,9 +23,6 @@ Route::middleware('guest')->group(function () {
 
 // ログアウトルート
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-
-// 認証が不要なルート
-Route::resource('articles', ArticleController::class)->only(['index', 'show']);
 
 Route::middleware('auth')->group(function () {
 
@@ -42,3 +39,7 @@ Route::middleware('auth')->group(function () {
     // コメント投稿
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 });
+
+// 認証が不要なルート
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
