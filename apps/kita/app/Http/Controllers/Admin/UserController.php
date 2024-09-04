@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AdminUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -45,5 +46,29 @@ class UserController extends Controller
         $message = $admin_users->isEmpty() ? '管理者が見つかりませんでした。' : null;
 
         return view('admin.user.index', compact('admin_users', 'message'));
+    }
+
+    public function create()
+    {
+        return view('admin.user.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:admin_users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        AdminUser::create([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return redirect()->route('admin_users.index')->with('success', '管理者が登録されました');
     }
 }

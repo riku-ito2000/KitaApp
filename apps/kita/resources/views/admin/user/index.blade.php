@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('container')
+    <!-- フラッシュメッセージ -->
+    @include('common.messages')
 
     <div class="container">
         <h2 class="mb-4">管理者管理</h2>
@@ -39,10 +41,13 @@
             {{ $admin_users->links('vendor.pagination.custom') }}
         </div>
 
+        {{--新規登録ボタン--}}
         <div class="p-4 mb-4" style="background-color: #ffffff; border-radius: 8px;">
-            <div class="mb-3">
-                <button type="button" class="btn btn-primary">新規登録</button>
-            </div>
+            <form action="{{ route('admin.create') }}" method="GET">
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">新規登録</button>
+                </div>
+            </form>
 
             <table class="table table-striped table-bordered">
                 <thead>
@@ -68,8 +73,6 @@
                         </td>
                     </tr>
                 @endforeach
-                <!-- フラッシュメッセージ -->
-                @include('common.messages')
                 </tbody>
             </table>
 
