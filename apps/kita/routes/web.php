@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\Member\ArticleController;
 use App\Http\Controllers\Member\Auth\LoginController;
 use App\Http\Controllers\Member\Auth\RegisterController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // ホームページ（ログインフォーム）ルート
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('home');
 
 // 会員用ルート
 Route::middleware('guest:web')->group(function () {
@@ -25,16 +26,10 @@ Route::middleware('guest:web')->group(function () {
 // 会員用ログアウトルート
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-// 認証が不要なルート（全員がアクセス可能）
-Route::get('/articles', [ArticleController::class, 'index'])->name('member.articles.index');
-
 // 会員用認証が必要なルート
 Route::middleware('auth:web')->group(function () {
 
-    // 記事作成、編集、更新、削除ルート（member prefixを使用）
-    Route::prefix('member')->name('member.')->group(function () {
-        Route::resource('articles', ArticleController::class)->except(['index', 'show']);
-    });
+    Route::resource('articles', ArticleController::class)->except(['index', 'show']);
 
     // プロフィール編集ルート
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,6 +38,9 @@ Route::middleware('auth:web')->group(function () {
     // パスワード変更ルート
     Route::get('/password_change', [ProfileController::class, 'showPasswordChangeForm'])->name('password.change.form');
     Route::put('/password_change', [ProfileController::class, 'passwordChange'])->name('password.change');
+
+    // コメント投稿
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 });
 
 // 管理者用ルート
@@ -62,5 +60,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-// テスト用　新規追加実装後消去
-Route::get('/test-hashing', [AdminLoginController::class, 'testHashing']);
+// 認証が不要なルート
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');

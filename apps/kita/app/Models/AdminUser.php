@@ -15,7 +15,7 @@ class AdminUser extends Authenticatable
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
     // パスワードの自動ハッシュ化
