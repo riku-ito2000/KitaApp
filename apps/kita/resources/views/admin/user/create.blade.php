@@ -7,13 +7,14 @@
     <div class="container">
         <h2 class="mb-4">管理者管理 - 新規登録</h2>
 
-        <div class="row justify-content-start">
-            <div class="col-md-8">
-                <!-- カード全体の背景を白に -->
-                <div class="card text-start" style="background-color: #ffffff;">
-                    <div class="card-body">
-                        <form action="{{ route('admin.store') }}" method="POST">
-                            @csrf
+        <form action="{{ route('admin.store') }}" method="POST" id="registrationForm" class="w-100">
+            @csrf
+            <div class="row justify-content-start">
+                <!-- 左側のフォーム -->
+                <div class="col-md-8">
+                    <!-- カード全体の背景を白に -->
+                    <div class="card text-start" style="background-color: #ffffff;">
+                        <div class="card-body">
                             <div class="mb-3">
                                 <label for="last_name" class="form-label">姓 <span class="badge bg-danger">必須</span></label>
                                 <input type="text" id="last_name" name="last_name" class="form-control @error('last_name') is-invalid @enderror" style="background-color: #ffffff;" required>
@@ -53,15 +54,20 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary">登録する</button>
-                            </div>
-                        </form>
+                <!-- 右側のコンテナ（登録ボタン）-->
+                <div class="col-md-4 d-flex align-items-start">
+                    <div class="card w-100" style="background-color: #ffffff;">
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <button type="submit" form="registrationForm" class="btn btn-primary w-100">登録する</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
 
+    </div>
 @endsection

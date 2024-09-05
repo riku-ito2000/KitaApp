@@ -55,6 +55,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        // 入力データのバリデーション
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -62,13 +63,23 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        AdminUser::create([
+        // 新しい管理者を作成
+        $admin_user = AdminUser::create([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
 
-        return redirect()->route('admin_users.index')->with('success', '管理者が登録されました');
+        // 作成した管理者の編集画面にリダイレクト
+        return redirect()->route('admin.edit', $admin_user->id)->with('success', '登録処理が完了しました');
+    }
+
+    public function edit($id)
+    {
+        // 管理者ユーザーをIDで取得
+        $admin_user = AdminUser::findOrFail($id);
+
+        return view('admin.user.edit', compact('admin_user'));
     }
 }
