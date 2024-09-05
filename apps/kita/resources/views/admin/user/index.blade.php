@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('container')
-    <!-- フラッシュメッセージ -->
-    @include('common.messages')
+
 
     <div class="container">
         <h2 class="mb-4">管理者管理</h2>
+        <!-- フラッシュメッセージ -->
+        @include('common.messages')
 
         <!-- 検索フォーム -->
-        <form action="{{ route('admin.index') }}" method="GET">
+        <form action="{{ route('admin.admin_users.index') }}" method="GET">
             <div class="p-4 mb-0" style="background-color: #ffffff; border-radius: 8px 8px 0 0; border: 1px solid grey; border-bottom: none;">
                 <div class="row g-3">
                     <div class="col-md-4">
@@ -43,7 +44,7 @@
 
         {{--新規登録ボタン--}}
         <div class="p-4 mb-4" style="background-color: #ffffff; border-radius: 8px;">
-            <form action="{{ route('admin.create') }}" method="GET">
+            <form action="{{ route('admin.admin_users.create') }}" method="GET">
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">新規登録</button>
                 </div>
@@ -69,7 +70,7 @@
                         <td>{{ $admin_user->updated_at->format('Y/m/d H:i') }}</td>
                         <td>{{ $admin_user->created_at->format('Y/m/d H:i') }}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm">編集</button>
+                            <a href="{{ route('admin.admin_users.edit', $admin_user->id) }}" class="btn btn-primary btn-sm">編集</a>
                         </td>
                     </tr>
                 @endforeach

@@ -7,7 +7,7 @@
     <div class="container">
         <h2 class="mb-4">管理者管理 - 新規登録</h2>
 
-        <form action="{{ route('admin.store') }}" method="POST" id="registrationForm" class="w-100">
+        <form action="{{ route('admin.admin_users.store') }}" method="POST" id="registrationForm" class="w-100">
             @csrf
             <div class="row justify-content-start">
                 <!-- 左側のフォーム -->

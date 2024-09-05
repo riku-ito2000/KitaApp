@@ -57,12 +57,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('logout', [AdminLoginController::class, 'logout'])->name('logout');
 
     Route::middleware('auth:admin')->group(function () {
-        Route::get('admin_users', [UserController::class, 'index'])->name('index');
-        Route::get('admin_users/create', [UserController::class, 'create'])->name('create');
-        Route::post('admin_users', [UserController::class, 'store'])->name('store');
-        Route::get('admin_users/{admin_user}/edit', [UserController::class, 'edit'])->name('edit');
+        // 管理者ユーザー管理用ルート
+        Route::prefix('admin_users')->name('admin_users.')->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/create', [UserController::class, 'create'])->name('create');
+            Route::post('/', [UserController::class, 'store'])->name('store');
+            Route::get('/{admin_user}/edit', [UserController::class, 'edit'])->name('edit');
+            Route::put('/{admin_user}', [UserController::class, 'update'])->name('update');
+        });
     });
 });
-
-// テスト用　新規追加実装後消去
-Route::get('/test-hashing', [AdminLoginController::class, 'testHashing']);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AdminUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -48,11 +49,18 @@ class UserController extends Controller
         return view('admin.user.index', compact('admin_users', 'message'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create()
     {
         return view('admin.user.create');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         // 入力データのバリデーション
@@ -72,14 +80,55 @@ class UserController extends Controller
         ]);
 
         // 作成した管理者の編集画面にリダイレクト
-        return redirect()->route('admin.edit', $admin_user->id)->with('success', '登録処理が完了しました');
+        return redirect()->route('admin.admin_users.edit', $admin_user->id)->with('success', '登録処理が完了しました');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         // 管理者ユーザーをIDで取得
         $admin_user = AdminUser::findOrFail($id);
 
         return view('admin.user.edit', compact('admin_user'));
+    }
+
+    /**
+     * @param Request $request
+     * @param AdminUser $admin_user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    // データの更新
+    public function update(Request $request, AdminUser $admin_user)
+    {
+        // バリデーションの適用
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => [
+                'required', 'email',
+                Rule::unique('admin_users')->ignore($admin_user->id)->whereNull('deleted_at'),
+            ],
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        // データ更新
+        $admin_user->update([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'password' => $validated['password'] ? Hash::make($validated['password']) : $admin_user->password,
+        ]);
+
+        // メールアドレスが変更された場合のみ更新
+        if ($admin_user->email !== $validated['email']) {
+            $admin_user->email = $validated['email'];
+        }
+
+        // フラッシュメッセージを追加し、同じ画面にリダイレクト
+        return redirect()->route('admin.admin_users.edit', $admin_user->id)
+            ->with('success', '更新処理が完了しました');
     }
 }
