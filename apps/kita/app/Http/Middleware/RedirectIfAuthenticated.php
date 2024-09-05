@@ -22,7 +22,12 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect('/articles');
+                // 管理者用のリクエストかどうかを判断
+                if ($guard === 'admin' || $request->is('admin/*')) {
+                    return redirect('/admin/admin_users'); // 管理者用のリダイレクト先
+                }
+
+                return redirect('/articles'); // 会員用のリダイレクト先
             }
         }
 

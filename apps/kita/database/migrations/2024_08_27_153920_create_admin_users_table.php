@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('admin_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 255);
+            $table->string('first_name',255);
+            $table->string('last_name', 255);
             $table->string('email', 255)->unique();
             $table->string('password', 255);
             $table->timestamps();
-
+            $table->softDeletes(); // 削除日時
         });
     }
 
@@ -30,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints(); // 外部キー制約を無効にする
-        Schema::dropIfExists('members'); // テーブルを削除
-        Schema::enableForeignKeyConstraints(); // 外部キー制約を再度有効にする
+        Schema::dropIfExists('admin_users');
     }
 };
