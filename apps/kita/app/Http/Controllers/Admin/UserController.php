@@ -111,7 +111,6 @@ class UserController extends Controller
                 'required', 'email',
                 Rule::unique('admin_users')->ignore($admin_user->id)->whereNull('deleted_at'),
             ],
-            'password' => 'nullable|string|min:8|confirmed',
         ]);
 
         // データ更新
@@ -119,7 +118,6 @@ class UserController extends Controller
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
-            'password' => $validated['password'] ? Hash::make($validated['password']) : $admin_user->password,
         ]);
 
         // メールアドレスが変更された場合のみ更新

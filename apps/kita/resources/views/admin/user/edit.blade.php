@@ -56,11 +56,7 @@
                             <!-- パスワードフィールド -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">パスワード</label>
-                                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror">
-                                <small class="text-muted">変更する場合のみ入力してください</small>
-                                @error('password')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <p class="text-muted">*****</p>
                             </div>
 
                             <!-- 更新日時フィールド -->
