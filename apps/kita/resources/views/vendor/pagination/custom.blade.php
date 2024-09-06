@@ -1,13 +1,16 @@
 @if ($paginator->hasPages())
     <nav>
-        <ul class="pagination justify-content-center" style="background-color: #ffffff;">
+        <ul class="pagination justify-content-center border-0"
+            style="background-color: #ffffff;
+                   border: 1px solid {{ request()->is('admin/*') ? '#d3d3d3' : '#5a5' }};
+                   border-radius: 8px;">
             {{-- 前のページリンク --}}
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
                     <span class="page-link"
                           aria-hidden="true"
                           style="color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
-                               border-color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
+                               border-color: {{ request()->is('admin/*') ? '#d3d3d3' : '#5a5' }};
                                background-color: #ffffff;">
                         Previous
                     </span>
@@ -19,7 +22,7 @@
                        rel="prev"
                        aria-label="@lang('pagination.previous')"
                        style="color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
-                              border-color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
+                              border-color: {{ request()->is('admin/*') ? '#d3d3d3' : '#5a5' }};
                               background-color: #ffffff;">
                         Previous
                     </a>
@@ -33,7 +36,7 @@
                     <li class="page-item disabled" aria-disabled="true">
                         <span class="page-link"
                               style="color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
-                                     border-color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
+                                     border-color: {{ request()->is('admin/*') ? '#d3d3d3' : '#5a5' }};
                                      background-color: #ffffff;">
                             {{ $element }}
                         </span>
@@ -48,7 +51,7 @@
                                 <span class="page-link"
                                       style="background-color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
                                              color: white;
-                                             border-color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};">
+                                             border-color: {{ request()->is('admin/*') ? '#d3d3d3' : '#5a5' }};">
                                     {{ $page }}
                                 </span>
                             </li>
@@ -57,7 +60,7 @@
                                 <a class="page-link"
                                    href="{{ $url }}"
                                    style="color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
-                                          border-color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
+                                          border-color: {{ request()->is('admin/*') ? '#d3d3d3' : '#5a5' }};
                                           background-color: #ffffff;">
                                     {{ $page }}
                                 </a>
@@ -75,7 +78,7 @@
                        rel="next"
                        aria-label="@lang('pagination.next')"
                        style="color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
-                              border-color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
+                              border-color: {{ request()->is('admin/*') ? '#d3d3d3' : '#5a5' }};
                               background-color: #ffffff;">
                         Next
                     </a>
@@ -85,7 +88,7 @@
                     <span class="page-link"
                           aria-hidden="true"
                           style="color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
-                                 border-color: {{ request()->is('admin/*') ? '#007bff' : '#5a5' }};
+                                 border-color: {{ request()->is('admin/*') ? '#d3d3d3' : '#5a5' }};
                                  background-color: #ffffff;">
                         Next
                     </span>
