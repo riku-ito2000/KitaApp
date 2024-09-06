@@ -113,17 +113,12 @@ class UserController extends Controller
             ],
         ]);
 
-        // データ更新
-        $admin_user->update([
+        // データ更新（変更がある場合のみ）
+        $admin_user->update(array_filter([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
-            'email' => $validated['email'],
-        ]);
-
-        // メールアドレスが変更された場合のみ更新
-        if ($admin_user->email !== $validated['email']) {
-            $admin_user->email = $validated['email'];
-        }
+            'email' => $validated['email'] !== $admin_user->email ? $validated['email'] : null,
+        ]));
 
         // フラッシュメッセージを追加し、同じ画面にリダイレクト
         return redirect()->route('admin.admin_users.edit', $admin_user->id)
