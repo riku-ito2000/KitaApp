@@ -87,7 +87,11 @@
                         <button type="submit" form="updateForm" class="btn btn-primary w-100 mb-3">更新する</button>
 
                         <!-- 削除ボタン -->
-                        <button type="submit" class="btn btn-danger w-100">削除する</button>
+                        <form action="{{ route('admin.admin_users.destroy', $admin_user->id) }}" method="POST" id="deleteForm" class="w-100">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger w-100">削除する</button>
+                        </form>
                     </div>
                 </div>
             </div>
