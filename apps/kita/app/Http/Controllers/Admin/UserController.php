@@ -142,6 +142,6 @@ class UserController extends Controller
         $admin_user->delete();
 
         // フラッシュメッセージを追加して一覧画面にリダイレクト
-        return redirect()->route('admin_users.index')->with('success', '管理者が削除されました。');
+        return redirect()->route('admin.admin_users.index')->with('success', '削除処理が完了しました');
     }
 }
