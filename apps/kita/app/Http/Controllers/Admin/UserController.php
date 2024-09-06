@@ -113,7 +113,7 @@ class UserController extends Controller
             ],
         ]);
 
-        // データ更新（変更がある場合のみ）
+        // データ更新（変更した場合のみ）
         $admin_user->update(array_filter([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
