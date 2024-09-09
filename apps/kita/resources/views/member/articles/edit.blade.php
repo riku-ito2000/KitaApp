@@ -9,17 +9,24 @@
         <!-- フラッシュメッセージ -->
         @include('common.messages')
 
-        <form method="POST" action="{{ route('member.articles.store')}}">
+        <form method="POST" action="{{ route('articles.update', $article->id) }}">
             @csrf
+            @method('PUT')
+
             <div class="form-group mb-4">
                 <label for="title">タイトル</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $article->title) }}" required
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', $article->title) }}" required
                        style="border: 1px solid #5a5; background-color: #ffffff;">
+                @error('title')
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="form-group mb-4">
                 <label for="tags">タグ</label>
-                <select multiple class="form-control" id="tags" name="tags[]"
+                <select multiple class="form-control @error('tags') is-invalid @enderror" id="tags" name="tags[]"
                         style="border: 1px solid #5a5; background-color: #ffffff;">
                     @foreach($tags as $tag)
                         <option value="{{ $tag->id }}" {{ in_array($tag->id, $article->tags->pluck('id')->toArray()) ? 'selected' : '' }}>
@@ -27,12 +34,28 @@
                         </option>
                     @endforeach
                 </select>
+                @error('tags')
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="form-group mb-4">
                 <label for="contents">記事内容</label>
-                <textarea class="form-control" id="contents" name="contents" rows="10" required
+                <textarea class="form-control @error('contents') is-invalid @enderror" id="contents" name="contents" rows="10" required
                           style="border: 1px solid #5a5; background-color: #ffffff;">{{ old('contents', $article->contents) }}</textarea>
+                @error('contents')
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="form-group d-flex justify-content-end">
+                <button type="submit" class="btn btn-success rounded-pill py-2 px-3 border-0" style="background-color: #8BC34A;">
+                    更新する
+                </button>
             </div>
         </form>
     </div>
