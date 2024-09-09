@@ -56,7 +56,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     // 認証が必要な管理者用ルート
     Route::middleware('auth:admin')->group(function () {
-        Route::get('admin_users', [UserController::class, 'index'])->name('admin_users.index');
+        Route::get('admin_users', [UserController::class, 'index'])->name('index');
     });
 });
 
