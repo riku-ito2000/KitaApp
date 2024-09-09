@@ -1,3 +1,4 @@
+<div class="container" style="max-width: 800px;">
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -19,3 +20,4 @@
         {{ $message }}
     </div>
 @endif
+</div>

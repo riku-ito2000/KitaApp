@@ -30,6 +30,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('members');
+        Schema::disableForeignKeyConstraints(); // 外部キー制約を無効にする
+        Schema::dropIfExists('members'); // テーブルを削除
+        Schema::enableForeignKeyConstraints(); // 外部キー制約を再度有効にする
     }
 };
