@@ -4,6 +4,8 @@
 
     <div class="container">
         <h2 class="mb-4">管理者管理</h2>
+        <!-- フラッシュメッセージ -->
+        @include('common.messages')
 
         <!-- 検索フォーム -->
         <form action="{{ route('admin.admin_users.index') }}" method="GET">
