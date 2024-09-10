@@ -54,9 +54,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // 管理者ログアウトルート
     Route::get('logout', [AdminLoginController::class, 'logout'])->name('logout');
 
-    // 認証が必要な管理者用ルート
+    // 管理者用CRUDルート
     Route::middleware('auth:admin')->group(function () {
-        Route::get('admin_users', [UserController::class, 'index'])->name('index');
+        Route::resource('admin_users', UserController::class);
     });
 });
 

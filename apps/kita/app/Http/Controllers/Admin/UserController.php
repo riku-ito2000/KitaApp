@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AdminUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -65,5 +66,40 @@ class UserController extends Controller
         }
 
         return str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $value);
+    }
+
+    public function create()
+    {
+        return view('admin.user.create');
+    }
+
+    public function store(Request $request)
+    {
+        // 入力データのバリデーション
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:admin_users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // 新しい管理者を作成
+        $adminUser = AdminUser::create([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        // 作成した管理者の編集画面にリダイレクト
+        return redirect()->route('admin.edit', $adminUser->id)->with('success', '登録処理が完了しました');
+    }
+
+    public function edit($id)
+    {
+        // 管理者ユーザーをIDで取得
+        $adminUser = AdminUser::findOrFail($id);
+
+        return view('admin.user.edit', compact('adminUser'));
     }
 }
