@@ -37,4 +37,20 @@ class MemberController extends Controller
         // ビューに渡す
         return view('admin.member.index', compact('members'));
     }
+
+    /**
+     * LIKEクエリ用に特殊文字をエスケープ
+     *
+     * @param string|null $value
+     * @return string
+     */
+    private function escapeLike(?string $value): string
+    {
+        if ($value === null) {
+            return '';
+        }
+
+        // 特殊文字（% と _）をエスケープ
+        return str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $value);
+    }
 }
