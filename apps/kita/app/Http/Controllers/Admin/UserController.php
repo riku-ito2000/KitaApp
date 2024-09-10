@@ -92,7 +92,7 @@ class UserController extends Controller
         ]);
 
         // 作成した管理者の編集画面にリダイレクト
-        return redirect()->route('admin.edit', $adminUser->id)->with('success', '登録処理が完了しました');
+        return redirect()->route('admin.admin_users.edit', $adminUser->id)->with('success', '登録処理が完了しました');
     }
 
     public function edit($id)
