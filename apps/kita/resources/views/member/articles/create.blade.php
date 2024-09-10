@@ -9,7 +9,7 @@
         <!-- フラッシュメッセージ -->
         @include('common.messages')
 
-        <form method="POST" action="{{ route('member.articles.store') }}">
+        <form method="POST" action="{{ route('articles.store') }}">
             @csrf
 
             <div class="form-group mb-4">
@@ -50,7 +50,9 @@
             </div>
 
             <div class="form-group d-flex justify-content-end">
-                <button type="submit" class="btn" style="background-color: #5a5; color: white; padding: 5px 10px;">投稿する</button>
+                <button type="submit" class="btn btn-success rounded-pill py-2 px-3 border-0" style="background-color: #8BC34A;">
+                    投稿する
+                </button>
             </div>
         </form>
     </div>

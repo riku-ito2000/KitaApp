@@ -11,42 +11,62 @@ use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
     /**
+     * Displaying the admin member list and searching the admins
+     *
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
         // クエリパラメータを取得
-        $last_name = $request->input('last_name');
-        $first_name = $request->input('first_name');
-        $email = $request->input('email');
+        $lastName = $this->escapeLike($request->input('last_name'));
+        $firstName = $this->escapeLike($request->input('first_name'));
+        $email = $this->escapeLike($request->input('email'));
 
         // ページネーションの設定を取得
         $paginationLimit = config('pagination.admin_users', 10);
 
         // クエリビルダーでフィルタリング
-        $admin_users = AdminUser::query();
+        $adminUsers = AdminUser::query();
 
-        if ($last_name) {
-            $admin_users->where('last_name', 'like', '%'.$last_name.'%');
+        if ($lastName) {
+            $adminUsers->where('last_name', 'like', '%'.$lastName.'%');
         }
 
-        if ($first_name) {
-            $admin_users->where('first_name', 'like', '%'.$first_name.'%');
+        if ($firstName) {
+            $adminUsers->where('first_name', 'like', '%'.$firstName.'%');
         }
 
         if ($email) {
-            $admin_users->where('email', 'like', '%'.$email.'%');
+            $adminUsers->where('email', 'like', '%'.$email.'%');
         }
 
+        // ID順に並べる
+        $adminUsers->orderBy('id');
+
         // ページネーションの実行と検索クエリを保持
-        $admin_users = $admin_users->paginate($paginationLimit)
+        $adminUsers = $adminUsers->paginate($paginationLimit)
             ->appends($request->except('page'));
 
         // メッセージを設定
-        $message = $admin_users->isEmpty() ? '管理者が見つかりませんでした。' : null;
+        $message = $adminUsers->isEmpty() ? '管理者が見つかりませんでした。' : null;
 
-        return view('admin.user.index', compact('admin_users', 'message'));
+        return view('admin.user.index', compact('adminUsers', 'message'));
+    }
+
+    /**
+     * LIKEクエリ用に特殊文字をエスケープ
+     *
+     * @param string|null $value
+     * @return string
+     */
+    private function escapeLike(?string $value): string
+    {
+        if ($value === null) {
+            return '';
+        }
+
+        return str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $value);
     }
 
     /**
@@ -72,7 +92,7 @@ class UserController extends Controller
         ]);
 
         // 新しい管理者を作成
-        $admin_user = AdminUser::create([
+        $adminUser = AdminUser::create([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
@@ -80,28 +100,28 @@ class UserController extends Controller
         ]);
 
         // 作成した管理者の編集画面にリダイレクト
-        return redirect()->route('admin.admin_users.edit', $admin_user->id)->with('success', '登録処理が完了しました');
+        return redirect()->route('admin.admin_users.edit', $adminUser->id)->with('success', '登録処理が完了しました');
     }
 
     /**
-     * @param $id
+     * Displaying admin user edit
+     *
+     * @param AdminUser $adminUser
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(AdminUser $adminUser)
     {
-        // 管理者ユーザーをIDで取得
-        $admin_user = AdminUser::findOrFail($id);
-
-        return view('admin.user.edit', compact('admin_user'));
+        return view('admin.user.edit', compact('adminUser'));
     }
 
     /**
+     * Updating user information
+     *
      * @param Request $request
-     * @param AdminUser $admin_user
+     * @param AdminUser $adminUser
      * @return \Illuminate\Http\RedirectResponse
      */
-    // データの更新
-    public function update(Request $request, AdminUser $admin_user)
+    public function update(Request $request, AdminUser $adminUser)
     {
         // バリデーションの適用
         $validated = $request->validate([
@@ -109,26 +129,19 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => [
                 'required', 'email',
-                Rule::unique('admin_users')->ignore($admin_user->id)->whereNull('deleted_at'),
+                Rule::unique('admin_users')->ignore($adminUser->id),
             ],
-            'password' => 'nullable|string|min:8|confirmed',
         ]);
 
         // データ更新
-        $admin_user->update([
+        $adminUser->update([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
-            'password' => $validated['password'] ? Hash::make($validated['password']) : $admin_user->password,
         ]);
 
-        // メールアドレスが変更された場合のみ更新
-        if ($admin_user->email !== $validated['email']) {
-            $admin_user->email = $validated['email'];
-        }
-
         // フラッシュメッセージを追加し、同じ画面にリダイレクト
-        return redirect()->route('admin.admin_users.edit', $admin_user->id)
+        return redirect()->route('admin.admin_users.edit', $adminUser->id)
             ->with('success', '更新処理が完了しました');
     }
 

@@ -3,10 +3,9 @@
 @section('title', '記事一覧 - Kita')
 
 @section('container')
-    <!-- フラッシュメッセージ -->
-    @include('common.messages')
-
     <div class="container py-4" style="background-color: #ffffff; max-width: 800px;">
+        <!-- フラッシュメッセージ -->
+        @include('common.messages')
         <!-- 記事が存在する場合のリスト表示 -->
         @if($articles->isNotEmpty())
         <div class="container mt-3" style="max-width: 800px;">
@@ -22,14 +21,17 @@
                                             {{ $article->member ? $article->member->name : 'Unknown' }}が{{ $article->created_at->format('Y年m月d日') }}に投稿
                                         </small>
                                         <!-- タイトルのフォントサイズを大きく -->
-                                        <h5 class="mb-1" style="font-weight: 800; color: #343a40; font-size: 1.5rem; margin-top: -5px;">
-                                            {{ $article->title }}
-                                        </h5>
+                                        <a href="{{ route('articles.show', $article->id) }}" class="list-group-item" style="text-decoration: none; color: inherit; border: none; background-color: transparent; padding: 0; margin-bottom:-10px">
+                                            <!-- リンク内で記事の概要を表示 -->
+                                            <h5 class="mb-1" style="font-weight: 800; color: #343a40; font-size: 1.5rem; margin-top: -3px;">
+                                                {{ $article->title }}
+                                            </h5>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="d-flex mt-2">
                                     @foreach ($article->tags as $tag)
-                                        <span class="badge bg-primary me-1" style="border-radius: 3px;">{{ $tag->name }}</span>
+                                        <span class="badge rounded-1 bg-primary me-1">{{ $tag->name }}</span>
 
                                     @endforeach
                                 </div>
