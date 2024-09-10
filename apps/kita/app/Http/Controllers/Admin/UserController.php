@@ -129,7 +129,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => [
                 'required', 'email',
-                Rule::unique('admin_users')->ignore($adminUser->id)->whereNull('deleted_at'),
+                Rule::unique('admin_users')->ignore($adminUser->id),
             ],
         ]);
 
