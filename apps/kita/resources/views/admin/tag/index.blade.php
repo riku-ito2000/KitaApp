@@ -32,11 +32,9 @@
 
         {{--新規登録ボタン--}}
         <div class="p-4 mb-4 bg-white" style="border-radius: 8px;">
-            <form action="{{ route('admin.article_tags.create') }}" method="GET">
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">新規登録</button>
                 </div>
-            </form>
 
             {{--この色指定だけは、変えてしまうとデフォルト設定の色になってしまう--}}
             <table class="table table-bordered align-middle" style="--bs-table-bg: #ffffff;">
