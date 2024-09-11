@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\Member\ArticleController;
@@ -57,6 +58,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // 管理者用CRUDルート
     Route::middleware('auth:admin')->group(function () {
         Route::resource('admin_users', UserController::class);
+    });
+
+    //タグ管理CRUDルート
+    Route::middleware('auth:admin')->group(function () {
+        Route::resource('article_tags', TagController::class);
     });
 });
 
