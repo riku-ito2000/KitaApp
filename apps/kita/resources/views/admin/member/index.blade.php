@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">メールアドレス</label>
-                        <input type="email" id="email" name="email" class="form-control bg-white" value="{{ request('email') }}">
+                        <input type="text" id="email" name="email" class="form-control bg-white" value="{{ request('email') }}">
                     </div>
                 </div>
             </div>

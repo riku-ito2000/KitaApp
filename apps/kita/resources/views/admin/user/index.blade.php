@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="email" class="form-label">メールアドレス</label>
-                        <input type="email" id="email" name="email" class="form-control bg-white" value="{{ request('email') }}">
+                        <input type="text" id="email" name="email" class="form-control bg-white" value="{{ request('email') }}">
                     </div>
                 </div>
             </div>
@@ -40,8 +40,8 @@
         </div>
 
         {{--新規登録ボタン--}}
-        <div class="p-4 mb-4 bg-white" style="border-radius: 8px;">
-            <form action="{{ route('admin.admin_users.create') }}" method="GET">
+        <div class="p-3 mb-4 bg-white rounded">
+        <form action="{{ route('admin.admin_users.create') }}" method="GET">
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">新規登録</button>
                 </div>
