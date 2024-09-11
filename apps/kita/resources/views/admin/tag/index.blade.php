@@ -32,9 +32,11 @@
 
         {{--新規登録ボタン--}}
         <div class="p-4 mb-4 bg-white" style="border-radius: 8px;">
+            <form action="{{ route('admin.article_tags.create') }}" method="GET">
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">新規登録</button>
                 </div>
+            </form>
 
             {{--この色指定だけは、変えてしまうとデフォルト設定の色になってしまう--}}
             <table class="table table-bordered align-middle" style="--bs-table-bg: #ffffff;">
@@ -53,7 +55,7 @@
                         <td class="py-1 w-50">{{ $tag->name }}</td>
                         <td class="text-end py-1 w-30">{{ $tag->created_at->format('Y/m/d H:i') }}</td>
                         <td class="text-center py-1 w-10">
-                            <button type="button" class="btn btn-primary btn-sm">編集</button>
+                            <a href="{{ route('admin.article_tags.edit', $tag->id) }}" class="btn btn-primary btn-sm">編集</a>
                         </td>
                     </tr>
                 @endforeach

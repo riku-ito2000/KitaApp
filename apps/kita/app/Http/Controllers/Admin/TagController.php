@@ -23,7 +23,8 @@ class TagController extends Controller
         // クエリビルダーでフィルタリング
         $tagQuery = ArticleTag::query()
             ->when($name, function ($query, $name) {
-                return $query->where('name', 'like', '%'.$name.'%');
+                // escapeLikeメソッドを使ってLIKEクエリをエスケープ
+                return $query->where('name', 'like', '%'.$this->escapeLike($name).'%');
             });
 
         // ページネーションの実行と検索クエリを保持
@@ -48,5 +49,15 @@ class TagController extends Controller
 
         // 特殊文字（% と _）をエスケープ
         return str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $value);
+    }
+
+    public function create()
+    {
+        return view('admin.tag.create');
+    }
+
+    public function edit(ArticleTag $articleTag)
+    {
+        return view('admin.tag.edit', compact('articleTag'));
     }
 }
