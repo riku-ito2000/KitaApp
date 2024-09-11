@@ -8,6 +8,8 @@
         <h2 class="mb-4">管理者管理 - 編集</h2>
         <!-- フラッシュメッセージ -->
         @include('common.messages')
+
+        <!-- 更新フォーム -->
         <form action="{{ route('admin.admin_users.update', $adminUser->id) }}" method="POST" id="updateForm" class="w-100">
             @csrf
             @method('PUT')
@@ -79,43 +81,19 @@
                             <!-- 更新ボタン -->
                             <button type="submit" form="updateForm" class="btn btn-primary w-100 mb-3">更新する</button>
 
-                        <!-- 削除ボタン（モーダルをトリガー） -->
-                        <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteModal">削除する</button>
+                            <!-- 削除ボタン（モーダルをトリガー） -->
+                            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteAdminUserModal-{{ $adminUser->id }}">削除する</button>
 
-                        <!-- 削除確認モーダル -->
-                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">削除確認</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        一度削除すると元に戻せません。<br>よろしいですか？
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-                                        <button type="button" class="btn btn-danger" id="confirmDeleteButton">削除する</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- 削除確認モーダルの呼び出し -->
+                            @include('modals.modal_delete', [
+                                'modalId' => 'deleteAdminUserModal-' . $adminUser->id,
+                                'formId' => 'deleteAdminUserForm-' . $adminUser->id,
+                                'deleteRoute' => route('admin.admin_users.destroy', $adminUser->id),
+                            ])
                         </div>
-
-                        <!-- 削除フォーム -->
-                        <form action="{{ route('admin.admin_users.destroy', $adminUser->id) }}" method="POST" id="deleteForm">
-                            @csrf
-                            @method('DELETE')
-                        </form>
                     </div>
                 </div>
             </div>
-
-            <script>
-                document.getElementById('confirmDeleteButton').addEventListener('click', function() {
-                    document.getElementById('deleteForm').submit();
-                });
-            </script>
-
-        </div>
+        </form>
     </div>
 @endsection
