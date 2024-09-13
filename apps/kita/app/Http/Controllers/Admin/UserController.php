@@ -146,13 +146,13 @@ class UserController extends Controller
     }
 
     /**
-     * @param AdminUser $admin_user
+     * @param AdminUser $adminUser
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(AdminUser $admin_user)
+    public function destroy(AdminUser $adminUser)
     {
         // 論理削除を行う
-        $admin_user->delete();
+        $adminUser->delete();
 
         // フラッシュメッセージを追加して一覧画面にリダイレクト
         return redirect()->route('admin.admin_users.index')->with('success', '削除処理が完了しました');
