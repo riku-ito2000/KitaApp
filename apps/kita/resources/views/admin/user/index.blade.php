@@ -70,7 +70,9 @@
                         <td class="text-end py-1">{{ $adminUser->updated_at->format('Y/m/d H:i') }}</td>
                         <td class="text-end py-1">{{ $adminUser->created_at->format('Y/m/d H:i') }}</td>
                         <td class="text-center py-1">
-                            <button type="button" class="btn btn-primary btn-sm">編集</button>
+                            <a href="{{ route('admin.admin_users.edit', $adminUser->id) }}" class="btn btn-primary btn-sm">
+                                編集
+                            </a>
                         </td>
                     </tr>
                 @endforeach

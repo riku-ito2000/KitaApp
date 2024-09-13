@@ -8,6 +8,8 @@
         <h2 class="mb-4">管理者管理 - 編集</h2>
         <!-- フラッシュメッセージ -->
         @include('common.messages')
+
+        <!-- 更新フォーム -->
         <form action="{{ route('admin.admin_users.update', $adminUser->id) }}" method="POST" id="updateForm" class="w-100">
             @csrf
             @method('PUT')
@@ -79,13 +81,19 @@
                             <!-- 更新ボタン -->
                             <button type="submit" form="updateForm" class="btn btn-primary w-100 mb-3">更新する</button>
 
-                            <!-- 削除ボタン -->
-                            <button type="button" class="btn btn-danger w-100">削除する</button>
+                            <!-- 削除ボタン（モーダルをトリガー） -->
+                            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteAdminUserModal-{{ $adminUser->id }}">削除する</button>
+
+                            <!-- 削除確認モーダルの呼び出し -->
+                            @include('modals.modal_delete', [
+                                'modalId' => 'deleteAdminUserModal-' . $adminUser->id,
+                                'formId' => 'deleteAdminUserForm-' . $adminUser->id,
+                                'deleteRoute' => route('admin.admin_users.destroy', $adminUser->id),
+                            ])
                         </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-
 @endsection
