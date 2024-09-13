@@ -174,5 +174,6 @@ return [
         'article_id' => '記事ID',
         'last_name' => '姓',
         'first_name' => '名',
+        'tag_name' => 'タグ名'
     ],
 ];
