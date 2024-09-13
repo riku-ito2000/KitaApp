@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Comment\CommentController;
@@ -60,9 +61,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('admin_users', UserController::class);
     });
 
+    //会員管理ルート
+    Route::get('users', [MemberController::class, 'index'])->name('users.index');
+
     //タグ管理CRUDルート
     Route::middleware('auth:admin')->group(function () {
-        Route::resource('article_tags', TagController::class);
+        Route::resource('article_tags', TagController::class)->except(['show']);
     });
 });
 

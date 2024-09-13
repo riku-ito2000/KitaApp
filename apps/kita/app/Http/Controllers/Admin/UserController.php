@@ -144,4 +144,17 @@ class UserController extends Controller
         return redirect()->route('admin.admin_users.edit', $adminUser->id)
             ->with('success', '更新処理が完了しました');
     }
+
+    /**
+     * @param AdminUser $adminUser
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(AdminUser $adminUser)
+    {
+        // 論理削除を行う
+        $adminUser->delete();
+
+        // フラッシュメッセージを追加して一覧画面にリダイレクト
+        return redirect()->route('admin.admin_users.index')->with('success', '削除処理が完了しました');
+    }
 }
