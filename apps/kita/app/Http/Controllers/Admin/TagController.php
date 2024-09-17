@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use App\Models\ArticleTag;
 use Illuminate\Http\Request;
 
@@ -85,27 +84,5 @@ class TagController extends Controller
     public function edit(ArticleTag $articleTag)
     {
         return view('admin.tag.edit', compact('articleTag'));
-    }
-
-    /**
-     * @param Request $request
-     * @param Article $articleTag
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request, ArticleTag $articleTag)
-    {
-        // バリデーションの適用
-        $validated = $request->validate([
-            'tag_name' => 'required|string|max:255|unique:article_tags,name',
-        ]);
-
-        // データ更新
-        $articleTag->update([
-            'name' => $validated['tag_name'],
-        ]);
-
-        // フラッシュメッセージを追加し、同じ画面にリダイレクト
-        return redirect()->route('admin.article_tags.edit', $articleTag->id)
-            ->with('success', '更新処理が完了しました');
     }
 }
