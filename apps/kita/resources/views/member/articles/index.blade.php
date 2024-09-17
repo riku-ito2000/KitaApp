@@ -29,9 +29,9 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="d-flex mt-2">
+                                <div class="d-flex mt-2 flex-wrap">
                                     @foreach ($article->tags as $tag)
-                                        <span class="badge rounded-1 bg-primary me-1">{{ $tag->name }}</span>
+                                        <span class="badge rounded-1 bg-primary me-2 mb-2">{{ $tag->name }}</span>
 
                                     @endforeach
                                 </div>
