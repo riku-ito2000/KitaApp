@@ -70,6 +70,7 @@ class TagController extends Controller
         return redirect()->route('admin.article_tags.edit', $articleTag->id)->with('success', '登録処理が完了しました');
     }
 
+
     public function edit(ArticleTag $articleTag)
     {
         return view('admin.tag.edit', compact('articleTag'));
