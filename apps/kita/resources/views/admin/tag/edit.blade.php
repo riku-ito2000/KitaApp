@@ -55,8 +55,15 @@
                             <!-- 更新ボタン -->
                             <button type="submit" form="updateForm" class="btn btn-primary w-100 mb-3">更新する</button>
 
-                            <!-- 削除ボタン -->
-                            <button type="button" class="btn btn-danger w-100">削除する</button>
+                            <!-- 削除ボタン（モーダルをトリガー） -->
+                            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteAdminUserModal-{{ $articleTag->id }}">削除する</button>
+
+                            <!-- 削除確認モーダルの呼び出し -->
+                            @include('modals.modal_delete', [
+                                'modalId' => 'deleteAdminUserModal-' . $articleTag->id,
+                                'formId' => 'deleteAdminUserForm-' . $articleTag->id,
+                                'deleteRoute' => route('admin.article_tags.destroy', $articleTag->id),
+                            ])
                         </div>
                     </div>
                 </div>
