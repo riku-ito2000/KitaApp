@@ -109,6 +109,10 @@ class TagController extends Controller
             ->with('success', '更新処理が完了しました');
     }
 
+    /**
+     * @param ArticleTag $articleTag
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(ArticleTag $articleTag)
     {
         // 物理削除を実行
