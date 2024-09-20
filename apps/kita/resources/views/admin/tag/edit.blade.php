@@ -8,6 +8,7 @@
         <h2 class="mb-4">タグ管理 - 編集</h2>
         <!-- フラッシュメッセージ -->
     @include('common.messages')
+
         <form action="{{ route('admin.article_tags.update', $articleTag->id) }}" method="POST" id="updateForm" class="w-100">
             @csrf
             @method('PUT')

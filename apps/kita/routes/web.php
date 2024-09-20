@@ -66,7 +66,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     //タグ管理CRUDルート
     Route::middleware('auth:admin')->group(function () {
-        Route::resource('article_tags', TagController::class);
+        Route::resource('article_tags', TagController::class)->except(['show']);
     });
 });
 
