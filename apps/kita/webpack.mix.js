@@ -13,6 +13,12 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .autoload({
+        jquery: ['$', 'window.jQuery']  // jQueryを自動的にグローバルに割り当てる
+    })
+    .options({
+        processCssUrls: false  // CSS内のURL変換を無効化
+    });
 
 // バージョニング（キャッシュバスティング）
 if (mix.inProduction()) {
