@@ -85,4 +85,26 @@ class TagController extends Controller
     {
         return view('admin.tag.edit', compact('articleTag'));
     }
+
+    /**
+     * @param Request $request
+     * @param ArticleTag $articleTag
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, ArticleTag $articleTag)
+    {
+        // バリデーションの適用
+        $validated = $request->validate([
+            'tag_name' => 'required|string|max:255',
+        ]);
+
+        // データ更新
+        $articleTag->update([
+            'tag_name' => $validated['tag_name'],
+        ]);
+
+        // フラッシュメッセージを追加し、同じ画面にリダイレクト
+        return redirect()->route('admin.article_tags.edit', $articleTag->id)
+            ->with('success', '更新処理が完了しました');
+    }
 }
