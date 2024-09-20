@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '会員管理 - Kita')
+
 @section('container')
 
     <div class="container">

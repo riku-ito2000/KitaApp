@@ -56,6 +56,21 @@ class TagController extends Controller
         return view('admin.tag.create');
     }
 
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'tag_name' => 'required|string|max:255|unique:article_tags,name',
+        ]);
+
+        // 新しいタグを作成
+        $articleTag = ArticleTag::create([
+            'name' => $validated['tag_name'],
+        ]);
+
+        return redirect()->route('admin.article_tags.edit', $articleTag->id)->with('success', '登録処理が完了しました');
+    }
+
+
     public function edit(ArticleTag $articleTag)
     {
         return view('admin.tag.edit', compact('articleTag'));
