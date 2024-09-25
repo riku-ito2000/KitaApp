@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ArticleTag;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TagController extends Controller
 {
@@ -93,14 +94,17 @@ class TagController extends Controller
      */
     public function update(Request $request, ArticleTag $articleTag)
     {
-        // バリデーションの適用
         $validated = $request->validate([
-            'tag_name' => 'required|string|max:255',
+            'tag_name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('article_tags', 'name')->ignore($articleTag->id),
+            ],
         ]);
 
-        // データ更新
         $articleTag->update([
-            'tag_name' => $validated['tag_name'],
+            'name' => $validated['tag_name'],
         ]);
 
         // フラッシュメッセージを追加し、同じ画面にリダイレクト
