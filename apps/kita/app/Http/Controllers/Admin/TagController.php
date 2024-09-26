@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ArticleTag;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TagController extends Controller
 {
@@ -51,11 +52,18 @@ class TagController extends Controller
         return str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $value);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create()
     {
         return view('admin.tag.create');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -70,9 +78,37 @@ class TagController extends Controller
         return redirect()->route('admin.article_tags.edit', $articleTag->id)->with('success', '登録処理が完了しました');
     }
 
-
+    /**
+     * @param ArticleTag $articleTag
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function edit(ArticleTag $articleTag)
     {
         return view('admin.tag.edit', compact('articleTag'));
+    }
+
+    /**
+     * @param Request $request
+     * @param ArticleTag $articleTag
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, ArticleTag $articleTag)
+    {
+        $validated = $request->validate([
+            'tag_name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('article_tags', 'name')->ignore($articleTag->id),
+            ],
+        ]);
+
+        $articleTag->update([
+            'name' => $validated['tag_name'],
+        ]);
+
+        // フラッシュメッセージを追加し、同じ画面にリダイレクト
+        return redirect()->route('admin.article_tags.edit', $articleTag->id)
+            ->with('success', '更新処理が完了しました');
     }
 }
