@@ -6,11 +6,10 @@
     </a>
 
     <!-- サイドバー -->
-    <div class="sidebar">
+    <div class="sidebar" style="height: auto;">
         <!-- サイドバーメニュー -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
                 <!-- 管理者管理 -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -43,17 +42,7 @@
                         <p>会員管理</p>
                     </a>
                 </li>
-
-                <!-- タグ管理 -->
-{{--                <li class="nav-item">--}}
-{{--                    <a href="{{ route('admin.tags.index') }}" class="nav-link">--}}
-{{--                        <i class="nav-icon fas fa-tags"></i>--}}
-{{--                        <p>タグ管理</p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-
             </ul>
         </nav>
     </div>
 </aside>
-
