@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use App\Models\ArticleTag;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TagController extends Controller
 {
@@ -89,17 +89,20 @@ class TagController extends Controller
 
     /**
      * @param Request $request
-     * @param Article $articleTag
+     * @param ArticleTag $articleTag
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, ArticleTag $articleTag)
     {
-        // バリデーションの適用
         $validated = $request->validate([
-            'tag_name' => 'required|string|max:255|unique:article_tags,name',
+            'tag_name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('article_tags', 'name')->ignore($articleTag->id),
+            ],
         ]);
 
-        // データ更新
         $articleTag->update([
             'name' => $validated['tag_name'],
         ]);
