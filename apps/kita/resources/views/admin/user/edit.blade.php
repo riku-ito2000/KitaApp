@@ -3,7 +3,6 @@
 @section('title', '管理者編集 - Kita')
 
 @section('container')
-
     <div class="container">
         <h2 class="mb-4">管理者管理 - 編集</h2>
         <!-- フラッシュメッセージ -->
@@ -17,7 +16,6 @@
             <div class="row justify-content-start">
                 <!-- 左側のフォーム -->
                 <div class="col-md-8">
-                    <!-- カード全体の背景を白に -->
                     <div class="card text-start bg-white">
                         <div class="card-body">
                             <!-- IDフィールド -->
@@ -83,17 +81,17 @@
 
                             <!-- 削除ボタン（モーダルをトリガー） -->
                             <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteAdminUserModal-{{ $adminUser->id }}">削除する</button>
-
-                            <!-- 削除確認モーダルの呼び出し -->
-                            @include('modals.modal_delete', [
-                                'modalId' => 'deleteAdminUserModal-' . $adminUser->id,
-                                'formId' => 'deleteAdminUserForm-' . $adminUser->id,
-                                'deleteRoute' => route('admin.admin_users.destroy', $adminUser->id),
-                            ])
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+
+        <!-- 削除確認モーダルの呼び出し -->
+        @include('modals.modal_delete', [
+            'modalId' => 'deleteAdminUserModal-' . $adminUser->id,
+            'formId' => 'deleteAdminUserForm-' . $adminUser->id,
+            'deleteRoute' => route('admin.admin_users.destroy', $adminUser->id),
+        ])
     </div>
 @endsection

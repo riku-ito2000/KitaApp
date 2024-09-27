@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', '管理者編集 - Kita')
+@section('title', 'タグ管理 - 編集')
 
 @section('container')
 
     <div class="container">
         <h2 class="mb-4">タグ管理 - 編集</h2>
         <!-- フラッシュメッセージ -->
-    @include('common.messages')
+        @include('common.messages')
 
         <form action="{{ route('admin.article_tags.update', $articleTag->id) }}" method="POST" id="updateForm" class="w-100">
             @csrf
@@ -57,18 +57,19 @@
                             <button type="submit" form="updateForm" class="btn btn-primary w-100 mb-3">更新する</button>
 
                             <!-- 削除ボタン（モーダルをトリガー） -->
-                            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteAdminUserModal-{{ $articleTag->id }}">削除する</button>
-
-                            <!-- 削除確認モーダルの呼び出し -->
-                            @include('modals.modal_delete', [
-                                'modalId' => 'deleteAdminUserModal-' . $articleTag->id,
-                                'formId' => 'deleteAdminUserForm-' . $articleTag->id,
-                                'deleteRoute' => route('admin.article_tags.destroy', $articleTag->id),
-                            ])
+                            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteArticleTagModal-{{ $articleTag->id }}">削除する</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+
+        <!-- 削除確認モーダルの呼び出し -->
+        @include('modals.modal_delete', [
+            'modalId' => 'deleteArticleTagModal-' . $articleTag->id,
+            'formId' => 'deleteArticleTagForm-' . $articleTag->id,
+            'deleteRoute' => route('admin.article_tags.destroy', $articleTag->id),
+        ])
+
     </div>
 @endsection
