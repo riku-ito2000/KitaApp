@@ -111,4 +111,18 @@ class TagController extends Controller
         return redirect()->route('admin.article_tags.edit', $articleTag->id)
             ->with('success', '更新処理が完了しました');
     }
+
+    /**
+     * @param ArticleTag $articleTag
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(ArticleTag $articleTag)
+    {
+        // 物理削除を実行
+        $articleTag->delete();
+
+        // フラッシュメッセージを追加し、タグ一覧ページにリダイレクト
+        return redirect()->route('admin.article_tags.index')
+            ->with('success', '削除処理が完了しました');
+    }
 }
