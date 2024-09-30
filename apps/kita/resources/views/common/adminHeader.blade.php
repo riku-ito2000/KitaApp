@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.users.index') }}">会員管理</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.article_tags.index') }}">タグ管理</a>
+                </li>
             </ul>
             <!-- ログアウトボタン -->
             <div class="d-flex justify-content-end">

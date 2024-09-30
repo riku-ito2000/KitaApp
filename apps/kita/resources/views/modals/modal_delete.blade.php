@@ -13,15 +13,9 @@
                 <form action="{{ $deleteRoute }}" method="POST" id="{{ $formId }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">削除する</button>
+                    <button type="submit" class="btn btn-danger" id="confirmDeleteButton">削除する</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    document.getElementById('confirmDeleteButton').addEventListener('click', function() {
-        document.getElementById('{{ $formId }}').submit();
-    });
-</script>
