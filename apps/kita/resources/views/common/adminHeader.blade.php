@@ -23,10 +23,10 @@
                     <a class="nav-link" href="{{ route('admin.article_tags.index') }}">タグ管理</a>
                 </li>
             </ul>
-            <!-- ログアウトボタン -->
-            <div class="d-flex justify-content-end">
-                <a href="{{ route('admin.logout') }}" class="btn btn-outline-light">ログアウト</a>
-            </div>
+        </div>
+        <!-- ログアウトボタン -->
+        <div class="d-flex justify-content-end">
+            <a href="{{ route('admin.logout') }}" class="btn btn-outline-light">ログアウト</a>
         </div>
     </div>
 </nav>

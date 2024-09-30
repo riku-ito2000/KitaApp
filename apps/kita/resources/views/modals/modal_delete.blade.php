@@ -3,13 +3,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModalLabel">削除確認</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 一度削除すると元に戻せません。<br>削除してもよろしいですか？
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
                 <form action="{{ $deleteRoute }}" method="POST" id="{{ $formId }}">
                     @csrf
                     @method('DELETE')

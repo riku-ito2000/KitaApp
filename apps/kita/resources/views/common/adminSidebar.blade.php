@@ -42,6 +42,31 @@
                         <p>会員管理</p>
                     </a>
                 </li>
+
+                <!-- タグ管理 -->
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                            タグ管理
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.article_tags.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>一覧・検索</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.article_tags.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>新規登録</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
