@@ -80,7 +80,7 @@
                             <button type="submit" form="updateForm" class="btn btn-primary w-100 mb-3">更新する</button>
 
                             <!-- 削除ボタン（モーダルをトリガー） -->
-                            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteAdminUserModal-{{ $adminUser->id }}">削除する</button>
+                            <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deleteAdminUserModal-{{ $adminUser->id }}">削除する</button>
                         </div>
                     </div>
                 </div>
